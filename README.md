@@ -1,4 +1,4 @@
-# Notetaking App
+# Notetaking App for CS346
 
 
 

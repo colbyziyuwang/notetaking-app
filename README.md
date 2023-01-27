@@ -1,6 +1,6 @@
 # Notetaking App for CS346
 
-
+Team Memebr: Colby Wang, Aicha Ghioui, Hassan Hshmi, Jerry Li
 
 ## Getting started
 

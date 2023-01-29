@@ -12,6 +12,11 @@ repositories {
     gradlePluginPortal()
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    testImplementation(kotlin("test"))
 }

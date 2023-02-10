@@ -4,3 +4,7 @@ out/
 .gradle
 .DS_Store
 www/public
+bin/
+**/.idea/workspace.xml **/.idea/tasks.xml
+.idea
+.vscode

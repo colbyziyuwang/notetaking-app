@@ -15,6 +15,16 @@ class Notes {
 
     // Functions
 
+    // Returns the noteName
+    fun getNoteName(): String {
+        return this.noteName
+    }
+
+    // Returns the noteName
+    fun getData(): String {
+        return this.data
+    }
+
     // Returns the lastModifiedDate
     fun getLastModifiedDate(): String {
         return lastModifiedDate

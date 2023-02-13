@@ -14,7 +14,9 @@ class Main : Application() {
             250.0,
             150.0)
         stage.isResizable = false
-        stage.title = "GUI Project"
+        val note1 = Notes()
+        stage.title = note1.getLastModifiedDate() // Displaying the current date for now.
+
         stage.show()
     }
 }

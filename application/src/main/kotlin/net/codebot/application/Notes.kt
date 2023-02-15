@@ -1,4 +1,5 @@
 package net.codebot.application
+import javafx.scene.control.TextArea
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -10,7 +11,7 @@ class Notes : Item{
     private var noteName: String = "New Note"
     private val creationDate: String = getCurrentDate()  // Corresponds to the date the Note was created, never changed post init
     private var lastModifiedDate: String = creationDate // Corresponds to the date the note was last modified
-    private var data: String = "Remove this and enter your own text..." // The contents of the note. Will be text for now, but may become a whole class later.
+    private var data = TextArea() // The contents of the note. Will be text for now, but may become a whole class later.
 
 
     // Functions
@@ -25,7 +26,7 @@ class Notes : Item{
 
     // Returns the noteName
     fun getData(): String {
-        return this.data
+        return this.data.text
     }
 
     // Returns the lastModifiedDate
@@ -49,7 +50,7 @@ class Notes : Item{
     //  Call when note is edited
     //  TODO: need a system to update text such that state of text in UI is accurately reflected in text
     fun updateData(text: String) {
-        this.data = text
+        this.data.text = text
         parseForCode()
         parseForLatex()
     }

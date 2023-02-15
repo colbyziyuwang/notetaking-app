@@ -11,16 +11,11 @@ class Main : Application() {
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
-
-
         val model = Model()
         val currentView = CurrentView(model)
-/*        val dirView = DirectoryView(model) //View will register itself with the Model
-        val noteView = NoteView(model)*/
-        val grid = VBox()
-        grid.children.add(dirView) // JEFF QUESTION: Switching between views?
-        grid.children.add(noteView)
-        stage.scene = Scene(grid, 250.0, 150.0)
+        val outerBox = VBox()
+        outerBox.children.add(currentView)
+        stage.scene = Scene(outerBox, 250.0, 150.0)
         stage.show()
     }
 }

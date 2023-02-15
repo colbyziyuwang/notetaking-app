@@ -40,4 +40,11 @@ class NoteView (private val model: Model) : VBox(), IView{
         stage.title = (note.getNoteName() + note.getLastModifiedDate())
         stage.show()
     }
+
+    init {
+        //somehow get items from model.data
+        data.setOnKeyPressed {
+            if key == spacebar
+        }
+    }
 }

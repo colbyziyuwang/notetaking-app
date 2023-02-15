@@ -18,7 +18,12 @@ class Model {
        }
     }
 
+
+    // the list of notes and folders alike
+    private val items: MutableList<Item> = TODO()
     // Manage Folder logic below
+    // Notes logic here
+
 
 
 

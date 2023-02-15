@@ -2,11 +2,8 @@ package net.codebot.application
 
 import javafx.application.Application
 import javafx.scene.Scene
-import javafx.scene.control.Label
-import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
-import net.codebot.shared.SysInfo
 
 class Main : Application() {
     override fun start(stage: Stage) {
@@ -15,9 +12,11 @@ class Main : Application() {
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
 
-        val Model = Model()
-        val dirView = DirectoryView(Model) //View will register itself with the Model
-        val noteView = NoteView(Model)
+
+        val model = Model()
+        val currentView = CurrentView(model)
+/*        val dirView = DirectoryView(model) //View will register itself with the Model
+        val noteView = NoteView(model)*/
         val grid = VBox()
         grid.children.add(dirView) // JEFF QUESTION: Switching between views?
         grid.children.add(noteView)

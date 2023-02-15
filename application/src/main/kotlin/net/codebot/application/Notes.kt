@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter
 
 
 
-class Notes {
+class Notes : Item{
 
     // Properties
     private var noteName: String = "New Note"
@@ -15,6 +15,9 @@ class Notes {
 
     // Functions
 
+    override fun createItem() {
+        TODO("Not yet implemented")
+    }
     // Returns the noteName
     fun getNoteName(): String {
         return this.noteName

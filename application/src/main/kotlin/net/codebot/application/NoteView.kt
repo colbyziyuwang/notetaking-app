@@ -1,5 +1,4 @@
 package net.codebot.application
-
 import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.ScrollPane
@@ -9,7 +8,7 @@ import javafx.scene.text.Font
 import javafx.scene.text.Text
 import javafx.stage.Stage
 
-class NoteView (private val model: Model) : VBox(), IView{
+class NoteView (private val model: Model){
     override fun updateView(stage: Stage) {
         // get the items
         val note: Notes = Model.getItems()
@@ -41,4 +40,22 @@ class NoteView (private val model: Model) : VBox(), IView{
         stage.show()
     }
 
+    /* Jerry's toolbar
+    *         val toolBar = ToolBar(
+            Button("New"),
+            Button("Open"),
+            Button("Save")
+        )
+        val border = BorderPane()
+        border.top = toolBar
+
+        stage.scene = Scene(
+            border,//StackPane(Label("Hello ${SysInfo.userName}")),
+            250.0,
+            150.0)
+        stage.isResizable = false
+        val note1 = Notes()
+
+        stage.title = note1.getLastModifiedDate() // Displaying the current date for now.
+    * */
 }

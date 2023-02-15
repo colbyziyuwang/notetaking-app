@@ -13,6 +13,7 @@ class Model {
 
     // Notify all views that data has been changed
     private fun notifyObservers(){
+
        for (view in views){
            view.updateView()
        }

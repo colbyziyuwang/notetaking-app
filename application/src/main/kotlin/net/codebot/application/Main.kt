@@ -2,12 +2,6 @@ package net.codebot.application
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.layout.VBox
-import javafx.scene.control.*
-import javafx.scene.control.Label
-import javafx.scene.control.ToolBar
-import javafx.scene.layout.BorderPane
-import javafx.scene.layout.StackPane
-
 import javafx.stage.Stage
 
 class Main : Application() {
@@ -18,7 +12,7 @@ class Main : Application() {
         val model = Model()
         val currentView = CurrentView(model)
         val outerBox = VBox()
-        outerBox.children.add(currentView)
+        outerBox.children.add(currentView.curView)
         stage.scene = Scene(outerBox, 250.0, 150.0)
         stage.show()
     }

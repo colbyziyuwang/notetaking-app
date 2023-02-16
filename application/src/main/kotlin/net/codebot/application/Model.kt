@@ -20,10 +20,17 @@ class Model {
     }
 
 
-    // the list of notes and folders alike
-    private val note: Notes = Notes() //For now Model will have one field that is the note
+    private var note: Notes = Notes()//For now Model will have one field that is the note
 
-    // Manage Folder logic below
+    //returns the items of the model (For demo1 this is the one note)
+    fun getItems():Notes {
+        return note
+    }
+
+    fun createNote(){
+        note = Notes()
+    }
+
     // Notes logic here
 
 

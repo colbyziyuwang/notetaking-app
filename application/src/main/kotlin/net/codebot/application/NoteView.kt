@@ -1,43 +1,72 @@
 package net.codebot.application
+import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.ScrollPane
+import javafx.scene.control.TextArea
 import javafx.scene.control.ToolBar
+import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
 import javafx.stage.Stage
 
-class NoteView (private val model: Model){
-    override fun updateView(stage: Stage) {
+class NoteView (private val model: Model) : VBox(), IView{
+
+    //Starting off buttons in unknown state as advised by example MVC
+    private val createButton = Button("?")
+    private val editButton = Button("?")
+    private val deleteButton = Button("?")
+
+    private val toolBar = ToolBar() //Toolbar
+
+    private val outmostPane = BorderPane()
+
+
+    override fun updateView() {
         // get the items
-        val note: Notes = Model.getItems()
+        val note = model.getItems()
 
-        // display the note
-        val toolbar = ToolBar()
-        val button = Button("Create")
-        button.font = Font("Helvetica", 11.0)
-        toolbar.items.add(button)
-
-        val button2 = Button("Edit")
-        button.font = Font("Helvetica", 11.0)
-        toolbar.items.add(button2)
-
-        val button3 = Button("Delete")
-        button.font = Font("Helvetica", 11.0)
-        toolbar.items.add(button3)
-
-
-        val text = Text(note.getData())
-
+        // display Note text
+        val text = Text(note.getData().text)
         text.font = Font("Helvetica", 12.0)
         text.wrappingWidth = 350.0
+
         val scroll = ScrollPane()
         scroll.content = text
-        stage.scene = Scene(VBox(toolbar, scroll))
 
-        stage.title = (note.getNoteName() + note.getLastModifiedDate())
-        stage.show()
+        //JERRY's TOOLBAR HERE : outmoustPane.top = Jerrys toolbar
+        outmostPane.center = scroll
+    }
+
+
+    init {
+        //setting up the view
+        this.alignment = Pos.CENTER
+        this.minHeight = 100.0
+
+        //init button actions
+        createButton.text = "Create" //Text
+        editButton.text = "Edit"
+        deleteButton.text = "Delete"
+        createButton.font = Font("Helvetica", 11.0) //Fonts
+        editButton.font = Font("Helvetica", 11.0)
+        deleteButton.font = Font("Helvetica", 11.0)
+
+        toolBar.items.addAll(createButton, editButton, deleteButton) //adding to toolbar
+
+        outmostPane.center = toolBar // Adding to the outer box
+
+
+        //View Controller*************************************************************************************
+        createButton.setOnMouseClicked {
+            model.createNote()
+        }
+        //TODO : Implement Edit and Delete note actions
+
+        //registering view with the model when ready to start recieving data
+        model.addView(this)
+
     }
 
     /* Jerry's toolbar

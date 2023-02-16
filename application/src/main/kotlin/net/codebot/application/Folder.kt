@@ -1,6 +1,7 @@
 package net.codebot.application
 
-class Folder: Item {
+class Folder {
+    /*
     var folderName: String = "New Folder"
     val folderFiles = mutableListOf<Notes>()
 
@@ -48,5 +49,5 @@ class Folder: Item {
             }
         }
         return result
-    }
+    }*/
 }

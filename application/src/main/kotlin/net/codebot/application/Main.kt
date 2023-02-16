@@ -11,7 +11,17 @@ class Main : Application() {
 
         val model = Model()
         val currentView = CurrentView(model)
-        stage.scene = Scene(currentView.curView, 500.0, 350.0)
+
+
+        val scene = Scene(currentView.curView, 500.0, 350.0)
+
+
+        //Styling using CSS
+        scene.stylesheets.add("style.css")
+
+        stage.scene = scene
+
+
         stage.title = "NoteTaking application"
         stage.show()
     }

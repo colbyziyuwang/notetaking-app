@@ -22,8 +22,7 @@ class NoteView (private val model: Model) : VBox(), IView{
 
     val outmostPane = BorderPane() //outermost container of view
 
-    val dataArea = TextArea() // holds the visual aspects of the data
-    val dataContainer = VBox()
+    private val dataArea = TextArea() // holds the visual aspects of the data
 
 
     override fun updateView() {
@@ -72,6 +71,10 @@ class NoteView (private val model: Model) : VBox(), IView{
 
 
         //TODO : Implement Edit and Delete note actions
+
+
+        //CSS
+        
 
         //registering view with the model when ready to start receiving data
         model.addView(this)

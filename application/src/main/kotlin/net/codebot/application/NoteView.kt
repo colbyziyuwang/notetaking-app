@@ -20,7 +20,10 @@ class NoteView (private val model: Model) : VBox(), IView{
 
     private val toolBar = ToolBar() //Toolbar
 
-    val outmostPane = BorderPane()
+    val outmostPane = BorderPane() //outermost container of view
+
+    val dataArea = TextArea() // holds the visual aspects of the data
+    val dataContainer = VBox()
 
 
     override fun updateView() {
@@ -32,11 +35,10 @@ class NoteView (private val model: Model) : VBox(), IView{
         text.font = Font("Helvetica", 12.0)
         text.wrappingWidth = 350.0
 
-        val scroll = ScrollPane()
-        scroll.content = text
+        dataArea.text = text.text
 
         //JERRY's TOOLBAR HERE : outmoustPane.top = Jerrys toolbar
-        outmostPane.center = scroll
+        outmostPane.center = dataArea
     }
 
 
@@ -62,6 +64,13 @@ class NoteView (private val model: Model) : VBox(), IView{
         createButton.setOnMouseClicked {
             model.createNote()
         }
+
+        dataArea.setOnKeyTyped {
+            model.updateData(dataArea)
+            dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
+        }
+
+
         //TODO : Implement Edit and Delete note actions
 
         //registering view with the model when ready to start receiving data

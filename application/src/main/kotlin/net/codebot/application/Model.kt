@@ -1,5 +1,7 @@
 package net.codebot.application
 
+import javafx.scene.control.TextArea
+
 class Model {
 
     //All views of the model
@@ -28,8 +30,12 @@ class Model {
     }
 
     fun createNote(){ //Redundant?
-
         note = Notes()
+        notifyObservers()
+    }
+
+    fun updateData(data: TextArea){
+        note.updateData(data)
         notifyObservers()
     }
 

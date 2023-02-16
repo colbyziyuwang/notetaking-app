@@ -84,8 +84,8 @@ class Notes{
 
     fun updateData(text: TextArea) {
         this.data = text
-        parseForCode()
-        parseForLatex()
+        //parseForCode()
+        //parseForLatex()
     }
 
 

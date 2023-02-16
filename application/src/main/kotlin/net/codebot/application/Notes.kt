@@ -5,13 +5,13 @@ import java.time.format.DateTimeFormatter
 
 
 
-class Notes : Item{
+class Notes{
 
     // Properties
-    private var noteName: String = "New Note"
-    private val creationDate: String = getCurrentDate()  // Corresponds to the date the Note was created, never changed post init
-    private var lastModifiedDate: String = creationDate // Corresponds to the date the note was last modified
-    private var data: TextArea = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
+    private var noteName = "New Note"
+    private val creationDate = getCurrentDate()  // Corresponds to the date the Note was created, never changed post init
+    private var lastModifiedDate = creationDate // Corresponds to the date the note was last modified
+    private var data = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
 
 
 
@@ -49,11 +49,7 @@ class Notes : Item{
         this.data = state.data
     }
 
-    // Functions
 
-    override fun createItem() {
-        TODO("Not yet implemented")
-    }
     // Returns the noteName
     fun getNoteName(): String {
         return this.noteName

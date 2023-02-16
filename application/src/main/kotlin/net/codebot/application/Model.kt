@@ -8,7 +8,7 @@ class Model {
     // Views use this function to register themselves with the Model, and then get updates and states from the model.
     fun addView(view: IView){
        views.add(view)
-       view.updateView()
+       //view.updateView()
     }
 
     // Notify all views that data has been changed
@@ -20,18 +20,20 @@ class Model {
     }
 
 
-    private var note: Notes = Notes()//For now Model will have one field that is the note
+    private var note = Notes()//For now Model will have one field that is the note
 
     //returns the items of the model (For demo1 this is the one note)
     fun getItems():Notes {
         return note
     }
 
-    fun createNote(){
+    fun createNote(){ //Redundant?
+
         note = Notes()
+        notifyObservers()
     }
 
-    // Notes logic here
+
 
 
 

@@ -20,7 +20,7 @@ class NoteView (private val model: Model) : VBox(), IView{
 
     private val toolBar = ToolBar() //Toolbar
 
-    private val outmostPane = BorderPane()
+    val outmostPane = BorderPane()
 
 
     override fun updateView() {
@@ -64,9 +64,8 @@ class NoteView (private val model: Model) : VBox(), IView{
         }
         //TODO : Implement Edit and Delete note actions
 
-        //registering view with the model when ready to start recieving data
+        //registering view with the model when ready to start receiving data
         model.addView(this)
-
     }
 
     /* Jerry's toolbar

@@ -60,6 +60,8 @@
   <component name="NewModuleRootManager">
     <output-test url="file://$MODULE_DIR$/../../../shared/build/classes/java/test" />
     <exclude-output />
+    <output-test url="file://$MODULE_DIR$/../../../shared/build/classes/java/test" />
+    <exclude-output />
     <content url="file://$MODULE_DIR$/../../../shared/src/test" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

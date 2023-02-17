@@ -1,10 +1,13 @@
 package net.codebot.application
+import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
 import javafx.scene.control.ToolBar
+import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
@@ -41,14 +44,20 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         dataArea.text = text.text
 
+        dataArea.onKeyPressed = EventHandler { event ->
+            if (event.code == KeyCode.SPACE) model.getItems().saveState()
+        }
+
         // buttons for note manipulation
         val undoButton = Button("Undo")
         undoButton.setOnMouseClicked {
             model.getItems().undoState()
+            println("undo")
         }
         val redoButton = Button("Redo")
         redoButton.setOnMouseClicked {
             model.getItems().redoState()
+            println("redo")
         }
 
         //TODO: Once copy/paste is complete

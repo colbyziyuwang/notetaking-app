@@ -16,37 +16,37 @@ class Notes{
 
 
     // undo / redo handler
-    private data class State(val data: TextArea)
+    private data class State(val data: String)
 
     private object UndoRedoManager {
         private val states = mutableListOf<State>()
         private val undoneStates = mutableListOf<State>() // updated anytime undo is called
 
-        fun saveState(data: TextArea) {
+        fun saveState(data: String) {
             states.add(State(data = data))
         }
 
-        fun saveUndo(data: TextArea) {
+        fun saveUndo(data: String) {
             undoneStates.add(State(data = data))
         }
 
-        fun undoState() = states.last()
-        fun redoState() = undoneStates.last()
+        fun undoState() = states.removeLast()
+        fun redoState() = undoneStates.removeLast()
     }
 
     fun saveState() { // saves the current state of the document (should be called after space pressed)
-        UndoRedoManager.saveState(data = this.data)
+        UndoRedoManager.saveState(data = this.data.text)
     }
 
     fun redoState() { // restores the state before undo was called
         val state = UndoRedoManager.redoState()
-        this.data = state.data
+        this.data.text = state.data
     }
 
     fun undoState() { // undo the last action. The previous state is saved to be able to redo the action
         val state = UndoRedoManager.undoState()
-        UndoRedoManager.saveUndo(data = this.data)
-        this.data = state.data
+        UndoRedoManager.saveUndo(data = this.data.text)
+        this.data.text = state.data
     }
 
 

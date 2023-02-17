@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="i think we do not need the idea file">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_base_win_18_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_controls_win_18_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_graphics_win_18_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/meeting-minutes/daily-standup.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/NoteView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/NoteView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meeting-minutes/2023-02-15 standup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +210,7 @@
       <workItem from="1676243841388" duration="6849000" />
       <workItem from="1676323102351" duration="13482000" />
       <workItem from="1676577699912" duration="3738000" />
-      <workItem from="1676596314688" duration="2383000" />
+      <workItem from="1676596314688" duration="3387000" />
     </task>
     <task id="LOCAL-00001" summary="added a noteEditor class to branch">
       <created>1676244799388</created>
@@ -270,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676595517654</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="i think we do not need the idea file">
+      <created>1676599478745</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676599478745</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -14,6 +14,10 @@ import javafx.stage.Stage
 class NoteView (private val model: Model) : VBox(), IView{
 
     //Starting off buttons in unknown state as advised by example MVC
+
+    //Jerry: Make this more abstract with a dynamic array of buttons,
+    //       when context change happens push new buttons onto array
+    //       (generalize adding buttons to pushing in array)
     private val createButton = Button("?")
     private val editButton = Button("?")
     private val deleteButton = Button("?")
@@ -36,7 +40,24 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         dataArea.text = text.text
 
-        //JERRY's TOOLBAR HERE : outmoustPane.top = Jerrys toolbar
+        // buttons for note manipulation
+        val undoButton = Button("Undo")
+        undoButton.setOnMouseClicked {
+            model.getItems().undoState()
+        }
+        val redoButton = Button("Redo")
+        redoButton.setOnMouseClicked {
+            model.getItems().redoState()
+        }
+
+        //TODO: Once copy/paste is complete
+        //val copyButton = Button("Copy")
+        //val pasteButton = Button("Paste")
+
+        val noteToolBar = ToolBar() //Toolbar
+        noteToolBar.items.addAll(undoButton, redoButton)//, copyButton, pasteButton)
+
+        outmostPane.top = noteToolBar
         outmostPane.center = dataArea
     }
 
@@ -80,7 +101,7 @@ class NoteView (private val model: Model) : VBox(), IView{
         model.addView(this)
     }
 
-    /* Jerry's toolbar
+    /* Toolbar template
     *         val toolBar = ToolBar(
             Button("New"),
             Button("Open"),

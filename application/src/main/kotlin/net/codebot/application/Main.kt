@@ -5,13 +5,12 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
 class Main : Application() {
-    override fun start(stage: Stage) {
+    override fun start(stage: Stage?) {
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
         val model = Model()
         val currentView = CurrentView(model)
-
 
         val scene = Scene(currentView.curView, 500.0, 350.0)
 
@@ -19,10 +18,11 @@ class Main : Application() {
         //Styling using CSS
         scene.stylesheets.add("style.css")
 
-        stage.scene = scene
+        stage?.scene = scene
 
 
-        stage.title = "NoteTaking application"
-        stage.show()
+        stage?.title = "NoteTaking application"
+        stage?.show()
+
     }
 }

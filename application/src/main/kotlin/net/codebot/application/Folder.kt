@@ -1,8 +1,16 @@
 package net.codebot.application
 
 class Folder {
+    /*
     var folderName: String = "New Folder"
     val folderFiles = mutableListOf<Notes>()
+
+
+    override fun createItem() {
+        TODO("Not yet implemented")
+    }
+
+    //FUNCTIONS
 
     // change name of folder
     fun changeName(name: String) {
@@ -41,5 +49,5 @@ class Folder {
             }
         }
         return result
-    }
+    }*/
 }

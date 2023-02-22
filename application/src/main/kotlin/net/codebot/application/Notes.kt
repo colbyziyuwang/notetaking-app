@@ -65,6 +65,11 @@ class Notes{
         return lastModifiedDate
     }
 
+    // Returns the lastModifiedDate
+    fun getCreationDate(): String {
+        return creationDate
+    }
+
     //Computes the current date and returns it as a string
     private fun getCurrentDate(): String {
         val currentDate = LocalDateTime.now()

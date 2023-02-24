@@ -65,6 +65,11 @@ class Notes{
         return lastModifiedDate
     }
 
+    // Returns the lastModifiedDate
+    fun getCreationDate(): String {
+        return creationDate
+    }
+
     //Computes the current date and returns it as a string
     private fun getCurrentDate(): String {
         val currentDate = LocalDateTime.now()
@@ -88,6 +93,10 @@ class Notes{
         //parseForLatex()
     }
 
+    // update note name
+    fun updateNoteName(noteNa: String) {
+        this.noteName = noteNa
+    }
 
     // Deletes the current note (likely we do not need this function)
     // idea: implement delete inside the folder class

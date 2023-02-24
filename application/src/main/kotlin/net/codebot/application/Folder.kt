@@ -1,10 +1,8 @@
 package net.codebot.application
 
-class Folder {
-    /*
+class Folder: Item {
     var folderName: String = "New Folder"
     val folderFiles = mutableListOf<Notes>()
-
 
     override fun createItem() {
         TODO("Not yet implemented")
@@ -44,10 +42,31 @@ class Folder {
     fun searchFileByContent(content: String): MutableList<Notes> {
         val result = mutableListOf<Notes>()
         for (i in this.folderFiles.indices) {
-            if (this.folderFiles[i].getData().indexOf(content) != -1) {
+            if (this.folderFiles[i].getData().toString().indexOf(content) != -1) {
                 result.add(this.folderFiles[i])
             }
         }
         return result
-    }*/
+    }
+
+    // sort the folder by title
+    fun sortByTitle() {
+        val titleComparator = Comparator{ note1: Notes, note2: Notes ->
+            note1.getNoteName().compareTo(note2.getNoteName())}
+        this.folderFiles.sortedWith(titleComparator)
+    }
+
+    // sort the folder by creation date
+    fun sortByCreationDate() {
+        val dateComparator = Comparator{ note1: Notes, note2: Notes ->
+            note1.getCreationDate().compareTo(note2.getCreationDate())}
+        this.folderFiles.sortedWith(dateComparator)
+    }
+
+    // sort the folder by last modified date
+    fun sortByLastModifiedDate() {
+        val dateComparator = Comparator{ note1: Notes, note2: Notes ->
+            note1.getLastModifiedDate().compareTo(note2.getLastModifiedDate())}
+        this.folderFiles.sortedWith(dateComparator)
+    }
 }

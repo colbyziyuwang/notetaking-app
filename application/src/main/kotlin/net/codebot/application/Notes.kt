@@ -93,6 +93,10 @@ class Notes{
         //parseForLatex()
     }
 
+    // update note name
+    fun updateNoteName(noteNa: String) {
+        this.noteName = noteNa
+    }
 
     // Deletes the current note (likely we do not need this function)
     // idea: implement delete inside the folder class

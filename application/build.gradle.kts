@@ -21,6 +21,8 @@ repositories {
 dependencies {
     implementation(project(":shared"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.testng:testng:7.1.0")
+    implementation("org.testng:testng:7.1.0")
     testImplementation(kotlin("test"))
 }
 

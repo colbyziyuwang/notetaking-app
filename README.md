@@ -27,8 +27,6 @@ version 0.1: released Feb 17, 2023
 	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/Application_v.0.1.zip) (application)
 	
 version 0.2: released Mar 10, 2023
-
 	* release-notes (md)
-
 	* installers (application)
 

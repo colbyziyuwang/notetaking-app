@@ -5,30 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="i think we do not need the idea file">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_base_win_18_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_controls_win_18_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_graphics_win_18_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/meeting-minutes/daily-standup.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/releases/v0.1-release-notes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/multi-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/multi-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/NoteView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/NoteView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meeting-minutes/2023-02-15 standup" beforeDir="false" afterPath="$PROJECT_DIR$/releases/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,24 +34,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="multi-project" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="application" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="application" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="application" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />

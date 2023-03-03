@@ -1,5 +1,4 @@
-# PROJECT NAME
-Notetaking App for CS346
+# Notetaking App
 
 ## Goal
 We intend to build a notetaking app for students who wish to take notes electronically in class. We hope to make the process of taking notes more efficient and more user friendly, and to have various functionalities such as code blocks.

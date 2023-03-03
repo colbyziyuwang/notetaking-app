@@ -4,10 +4,11 @@
 We intend to build a notetaking app for students who wish to take notes electronically in class. We hope to make the process of taking notes more efficient and more user friendly, and to have various functionalities such as code blocks.
 
 ## Team members
-Team Memebr: Colby Wang: c684wang@uwaterloo.ca
-             Aicha Ghidaoui: aghidaou@uwaterloo.ca
-             Hassan Hashmi: h4hashimi@uwaterloo.ca
-             Jerry Li: zy37li@uwaterloo.ca
+Team Memebr: 
+Colby Wang: c684wang@uwaterloo.ca
+Aicha Ghidaoui: aghidaou@uwaterloo.ca
+Hassan Hashmi: h4hashimi@uwaterloo.ca
+Jerry Li: zy37li@uwaterloo.ca
 
 ## Quick-start
 You can download a zip folder from the releases folder, inside the zip folder you will find a bin directory. The application is inside that bin directory. Click on it and it will run.

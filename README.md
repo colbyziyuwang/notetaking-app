@@ -6,8 +6,11 @@ We intend to build a notetaking app for students who wish to take notes electron
 ## Team members
 Team Memebr: 
 Colby Wang: c684wang@uwaterloo.ca
+
 Aicha Ghidaoui: aghidaou@uwaterloo.ca
+
 Hassan Hashmi: h4hashimi@uwaterloo.ca
+
 Jerry Li: zy37li@uwaterloo.ca
 
 ## Quick-start

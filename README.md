@@ -21,10 +21,14 @@ Optional, but often helpful to have a screenshot or demo-video for new users.
 
 ## Releases
 version 0.1: released Feb 17, 2023
+
 	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.1-release-notes.md) (md)
+
 	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/Application_v.0.1.zip) (application)
 	
 version 0.2: released Mar 10, 2023
-	* release-notes (txt)
+
+	* release-notes (md)
+
 	* installers (application)
 

@@ -34,9 +34,13 @@ class Model {
         notifyObservers()
     }
 
-    fun updateData(data: TextArea){
-        note.updateData(data)
+    fun updateData(data: TextArea, caratPOS: Int){
+        note.updateData(data, caratPOS)
         notifyObservers()
+    }
+
+    fun getCaratPOS(): Int {
+        return note.getCarat()
     }
 
 

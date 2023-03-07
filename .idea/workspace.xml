@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="directoy class methods">
-      <change afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/LocalSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="added a LocalSettings class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -240,7 +237,7 @@
       <workItem from="1677033187887" duration="2744000" />
       <workItem from="1677186842404" duration="3588000" />
       <workItem from="1677886257673" duration="720000" />
-      <workItem from="1678145539459" duration="2814000" />
+      <workItem from="1678145539459" duration="3198000" />
     </task>
     <task id="LOCAL-00001" summary="added a noteEditor class to branch">
       <created>1676244799388</created>
@@ -305,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677035842712</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added a LocalSettings class">
+      <created>1678148854624</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678148854624</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +334,7 @@
     <MESSAGE value="i think we do not need the idea file" />
     <MESSAGE value="some small bug" />
     <MESSAGE value="directoy class methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="directoy class methods" />
+    <MESSAGE value="added a LocalSettings class" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a LocalSettings class" />
   </component>
 </project>

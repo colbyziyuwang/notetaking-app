@@ -1,18 +1,15 @@
 package net.codebot.application
+import javafx.beans.value.ChangeListener
 import javafx.event.EventHandler
 import javafx.geometry.Pos
-import javafx.scene.Scene
 import javafx.scene.control.Button
-import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
 import javafx.scene.control.ToolBar
 import javafx.scene.input.KeyCode
-import javafx.scene.input.KeyEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
-import javafx.stage.Stage
 
 class NoteView (private val model: Model) : VBox(), IView{
 
@@ -31,7 +28,6 @@ class NoteView (private val model: Model) : VBox(), IView{
 
     val dataArea = TextArea() // holds the visual aspects of the data
     val dataContainer = VBox()
-
 
     override fun updateView() {
         // get the items
@@ -69,6 +65,16 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         outmostPane.top = noteToolBar
         outmostPane.center = dataArea
+
+        // detect size change
+        val stageSizeListener: ChangeListener<Number> = ChangeListener<Number> { observable, oldValue, newValue ->
+            val name = note.getNoteName()
+            model.updateSize(name, outmostPane.getHeight(), outmostPane.getWidth())
+        }
+
+        outmostPane.widthProperty().addListener(stageSizeListener)
+        outmostPane.heightProperty().addListener(stageSizeListener)
+
     }
 
 

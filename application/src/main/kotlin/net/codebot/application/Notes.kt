@@ -1,8 +1,9 @@
 package net.codebot.application
 import javafx.scene.control.TextArea
+import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.update
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-
 
 
 class Notes{
@@ -95,7 +96,14 @@ class Notes{
 
     // update note name
     fun updateNoteName(noteNa: String) {
+        val oldName = this.noteName
         this.noteName = noteNa
+        // update database
+        transaction {
+            LocalSettings.update({LocalSettings.noteName eq oldName}) {
+                it[noteName] = noteNa
+            }
+        }
     }
 
     // Deletes the current note (likely we do not need this function)

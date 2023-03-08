@@ -1,10 +1,14 @@
 package net.codebot.application
 import javafx.scene.control.TextArea
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-
+@Serializable
 class Notes{
 
     // Properties
@@ -125,7 +129,7 @@ class Notes{
 
     // save
     fun save() {
-        // TODO: Saves the current state of the data/note
+        val string = Json.encodeToString(this)
     }
 
     //returns the position of the carat of the text area

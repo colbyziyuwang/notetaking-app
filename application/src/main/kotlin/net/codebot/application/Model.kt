@@ -39,11 +39,17 @@ class Model {
         notifyObservers()
     }
 
+    //returns the position of the carat
     fun getCaratPOS(): Int {
         return note.getCarat()
     }
 
 
+
+    //will invoke the save function of the note
+    fun saveData(){
+        note.save()
+    }
 
 
 

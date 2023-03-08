@@ -11,6 +11,7 @@ class Main : Application() {
 
         val model = Model()
         val currentView = CurrentView(model)
+
         stage?.scene = Scene(currentView.curView, 500.0, 350.0)
         stage?.title = "NoteTaking application"
         stage?.show()

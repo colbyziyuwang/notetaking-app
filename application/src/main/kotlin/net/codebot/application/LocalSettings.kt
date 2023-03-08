@@ -1,14 +1,12 @@
 package net.codebot.application
-import org.jetbrains.exposed.dao.id.IntIdTable
-import org.jetbrains.exposed.sql.statements.InsertStatement
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.Table
 
 // This table intends to save the width and height of the file (for now)
 object LocalSettings : Table() {
+    val id = integer("id").autoIncrement()
     val noteName = varchar("noteName", 50) // noteName
-    val width = integer("width") // width
-    val height = integer("height") // height
+    val width = double("width") // width
+    val height = double("height") // height
 
-    override val primaryKey = PrimaryKey(noteName) // noteName is the primary key
+    override val primaryKey = PrimaryKey(id) // noteName is the primary key
 }

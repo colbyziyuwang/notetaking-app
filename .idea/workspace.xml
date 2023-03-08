@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="added a LocalSettings class">
+    <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="added creation of DB in main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/LocalSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/LocalSettings.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/NoteView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/NoteView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Notes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Notes.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +252,7 @@
       <workItem from="1677033187887" duration="2744000" />
       <workItem from="1677186842404" duration="3588000" />
       <workItem from="1677886257673" duration="720000" />
-      <workItem from="1678145539459" duration="7204000" />
+      <workItem from="1678145539459" duration="23104000" />
     </task>
     <task id="LOCAL-00001" summary="added a noteEditor class to branch">
       <created>1676244799388</created>
@@ -327,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678148917744</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added creation of DB in main">
+      <created>1678158625425</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1678158625425</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,6 +364,7 @@
     <MESSAGE value="some small bug" />
     <MESSAGE value="directoy class methods" />
     <MESSAGE value="added a LocalSettings class" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a LocalSettings class" />
+    <MESSAGE value="added creation of DB in main" />
+    <option name="LAST_COMMIT_MESSAGE" value="added creation of DB in main" />
   </component>
 </project>

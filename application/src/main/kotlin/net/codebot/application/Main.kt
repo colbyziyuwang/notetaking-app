@@ -5,7 +5,6 @@ import javafx.stage.Stage
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.deleteAll
-import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class Main : Application() {
@@ -22,11 +21,11 @@ class Main : Application() {
             // remove previous values
             LocalSettings.deleteAll()
 
-            LocalSettings.insert {
-                it[noteName] = "New Note"
-                it[width] = 500
-                it[height] = 350
-            }
+            //LocalSettings.insert {
+                //it[noteName] = "New Note"
+                //it[width] = 500
+                //it[height] = 350
+           //}
         }
 
         // MVC design based off of

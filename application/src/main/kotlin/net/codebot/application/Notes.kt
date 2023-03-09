@@ -133,7 +133,7 @@ class Notes{
 
     // save
     fun save() {
-        val string = Json.encodeToString(this)
+        //TODO
     }
 
     //returns the position of the carat of the text area

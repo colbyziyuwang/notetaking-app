@@ -8,7 +8,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-@Serializable
 class Notes{
 
     // Properties

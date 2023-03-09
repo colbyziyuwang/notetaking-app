@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="directoy class methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/CustomSerializer.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Notes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Notes.kt" afterDir="false" />
     </list>

@@ -46,8 +46,8 @@ class Model {
         notifyObservers()
     }
 
-    fun updateData(data: TextArea){
-        note.updateData(data)
+    fun updateData(data: TextArea, caratPOS: Int){
+        note.updateData(data, caratPOS)
         notifyObservers()
     }
 
@@ -76,4 +76,18 @@ class Model {
         result[1] = height
         return result
     }
+    //returns the position of the carat
+    fun getCaratPOS(): Int {
+        return note.getCarat()
+    }
+
+
+
+    //will invoke the save function of the note
+    fun saveData(){
+        note.save()
+    }
+
+
+
 }

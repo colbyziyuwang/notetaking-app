@@ -102,8 +102,8 @@ class NoteView (private val model: Model) : VBox(), IView{
         }
 
         dataArea.setOnKeyTyped {
-            model.updateData(dataArea)
-            dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
+            model.updateData(dataArea, dataArea.caretPosition)
+            dataArea.positionCaret(model.getCaratPOS()) //fixing cursor postion
         }
 
 
@@ -113,22 +113,4 @@ class NoteView (private val model: Model) : VBox(), IView{
         model.addView(this)
     }
 
-    /* Toolbar template
-    *         val toolBar = ToolBar(
-            Button("New"),
-            Button("Open"),
-            Button("Save")
-        )
-        val border = BorderPane()
-        border.top = toolBar
-
-        stage.scene = Scene(
-            border,//StackPane(Label("Hello ${SysInfo.userName}")),
-            250.0,
-            150.0)
-        stage.isResizable = false
-        val note1 = Notes()
-
-        stage.title = note1.getLastModifiedDate() // Displaying the current date for now.
-    * */
 }

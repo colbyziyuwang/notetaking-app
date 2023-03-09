@@ -45,6 +45,7 @@ application {
     mainClass.set("net.codebot.application.Main")
 }
 
+
 javafx {
     // version is determined by the plugin above
     version = "18.0.2"

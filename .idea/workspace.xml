@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="added creation of DB in main">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
@@ -19,6 +20,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="87774d42-82a1-4c8e-b169-7fbe8ffb0e79" name="Changes" comment="directoy class methods">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/CustomSerializer.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Notes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Notes.kt" afterDir="false" />
+>>>>>>> localSave
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,15 +123,23 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+<<<<<<< HEAD
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Colby/Desktop/notetaking-app&quot;,
+=======
+    &quot;last_opened_file_path&quot;: &quot;/Users/hassan/Desktop/CS346/notetaking-app&quot;,
+>>>>>>> localSave
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+<<<<<<< HEAD
     &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
+=======
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+>>>>>>> localSave
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -212,7 +228,11 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="notetaking-app:console [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+=======
+    <configuration name="notetaking-app:console [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+>>>>>>> localSave
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/console" />
@@ -223,7 +243,11 @@
         </option>
         <option name="taskNames">
           <list>
+<<<<<<< HEAD
             <option value="run" />
+=======
+            <option value="build" />
+>>>>>>> localSave
           </list>
         </option>
         <option name="vmOptions" />
@@ -237,9 +261,15 @@
       <list>
         <item itemvalue="Gradle.notetaking-app:application [run]" />
         <item itemvalue="Gradle.notetaking-app:application [clean]" />
+<<<<<<< HEAD
         <item itemvalue="Gradle.notetaking-app:application [distZip]" />
         <item itemvalue="Gradle.notetaking-app:application [build]" />
         <item itemvalue="Gradle.notetaking-app:console [run]" />
+=======
+        <item itemvalue="Gradle.notetaking-app:console [build]" />
+        <item itemvalue="Gradle.notetaking-app:application [distZip]" />
+        <item itemvalue="Gradle.notetaking-app:application [build]" />
+>>>>>>> localSave
       </list>
     </recent_temporary>
   </component>

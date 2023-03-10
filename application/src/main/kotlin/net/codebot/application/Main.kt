@@ -11,10 +11,14 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.transactions.transaction
-
+import java.io.File
 
 class Main : Application() {
     override fun start(stage: Stage?) {
+        // files for settings
+        val fileName = "NoteSettings.txt"
+        var file = File(fileName)
+
         // need to create database
 
         // create database if it doesn't already exist
@@ -42,7 +46,10 @@ class Main : Application() {
 
         val model = Model()
         val currentView = CurrentView(model)
-        val scene = Scene(currentView.curView, 500.0, 350.0)
+        val content: List<String> = file.readLines()
+        val wid: Double = content[0].toDouble()
+        val hei: Double = content[1].toDouble()
+        val scene = Scene(currentView.curView, wid, hei)
 
         //Styling using CSS
         scene.stylesheets.add("defaultStyle.css")
@@ -59,6 +66,10 @@ class Main : Application() {
             print(stage!!.getHeight())
             print("\n")
             print(stage!!.getWidth())
+            val s1: String = "" + stage!!.getHeight()
+            val s2: String = "" + stage!!.getWidth()
+            val s3: String = s1 + "\n" + s2
+            file.writeText(s3)
         }
 
         stage?.widthProperty()?.addListener(stageSizeListener)

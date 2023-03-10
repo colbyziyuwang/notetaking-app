@@ -13,6 +13,8 @@
           <stringArguments>
             <stringArg name="classpath">
               <args>
+                <arg>$MODULE_DIR$/../../../console/build/classes/kotlin/main</arg>
+                <arg>$MODULE_DIR$/../../../shared/build/classes/kotlin/main</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.6.20/dab8089bca6ac0e394c37281ea8cff2f99acd421/kotlin-stdlib-jdk8-1.6.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-junit5/1.6.20/c5f357adf9a662303e9734f47233fc77bead676f/kotlin-test-junit5-1.6.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test/1.6.20/bb54acc81e266b7e763248f67773a49a82afd6f6/kotlin-test-1.6.20.jar</arg>
@@ -56,13 +58,13 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
     <output-test url="file://$MODULE_DIR$/../../../console/build/classes/java/test" />
     <exclude-output />
     <output-test url="file://$MODULE_DIR$/../../../console/build/classes/java/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../console/src/test" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="multi-project.console.main" />
     <orderEntry type="module" module-name="multi-project.shared.main" />

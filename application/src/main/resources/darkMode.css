@@ -1,29 +1,31 @@
 .root {
-    -fx-background-color: #E2F4ED;
+    -fx-background-color: #050A10;
 }
 
 TextArea {
-    -fx-text-fill: #13293D;
+    -fx-text-fill: #F6F0ED;
     -fx-box-shadow: none;
     -fx-font-family: "Raleway", sans-serif;
     -fx-font-size: 14px;
-    /*-fx-display-caret:true;*/
+    -fx-display-caret:true;
     -fx-padding: 10 10;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
-    -fx-background-color: #E2F4ED;
-    -fx-color: #E2F4ED;
+    -fx-background-color: #050A10;
+    -fx-color: #050A10;
 }
 
 TextArea .content {
      -fx-font-family: "Raleway", sans-serif;
      -fx-font-size: 14px;
+     -fx-background-color: #0F1E39;
+     -fx-box-shadow: none;
      -fx-padding: 10 10;
 }
 
 
 ToolBar {
-    -fx-background-color: #C2E7D9;
+    -fx-background-color: #0F1E39;
     -fx-padding: 10 10;
 }
 
@@ -34,7 +36,7 @@ ToolBar {
     -fx-box-sizing: border-box;*/
     -fx-transition: all 0.2s ease 0s;
     -fx-text-fill: #F6F0ED;
-    -fx-background-color: #177578;
+    -fx-background-color: #274C91;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-padding: 7 20;
@@ -43,7 +45,7 @@ ToolBar {
 }
 
 .button:hover {
-    -fx-background-color: #4BC6B9;
+    -fx-background-color: #5075B9;
 }
 
 .button:focused {

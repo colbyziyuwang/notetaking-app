@@ -60,6 +60,7 @@ class NoteView (private val model: Model) : VBox(), IView{
             println("redo")
         }
 
+
         //TODO: Once copy/paste is complete
         //val copyButton = Button("Copy")
         //val pasteButton = Button("Paste")
@@ -81,6 +82,7 @@ class NoteView (private val model: Model) : VBox(), IView{
         createButton.text = "Create" //Text
         editButton.text = "Edit"
         deleteButton.text = "Delete"
+
         createButton.font = Font("Helvetica", 11.0) //Fonts
         editButton.font = Font("Helvetica", 11.0)
         deleteButton.font = Font("Helvetica", 11.0)

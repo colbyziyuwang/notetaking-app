@@ -1,5 +1,4 @@
 package net.codebot.application
-
 import javafx.scene.control.TextArea
 
 class Model {
@@ -38,11 +37,4 @@ class Model {
         note.updateData(data)
         notifyObservers()
     }
-
-
-
-
-
-
-
 }

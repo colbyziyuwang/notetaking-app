@@ -1,0 +1,65 @@
+.root {
+    -fx-background-color: #E2F4ED;
+}
+
+TextArea {
+    -fx-text-fill: #13293D;
+    -fx-box-shadow: none;
+    -fx-font-family: "Raleway", sans-serif;
+    -fx-font-size: 14px;
+    /*-fx-display-caret:true;*/
+    -fx-padding: 10 10;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-color: #E2F4ED;
+    -fx-color: #E2F4ED;
+}
+
+TextArea .content {
+     -fx-font-family: "Raleway", sans-serif;
+     -fx-font-size: 14px;
+     -fx-padding: 10 10;
+}
+
+
+ToolBar {
+    -fx-background-color: #C2E7D9;
+    -fx-padding: 10 10;
+}
+
+.button {
+    /*-fx-color: rgba(4, 113, 166, 1);
+    -fx-border: none;
+    -fx-padding: 10 20;
+    -fx-box-sizing: border-box;*/
+    -fx-transition: all 0.2s ease 0s;
+    -fx-text-fill: #F6F0ED;
+    -fx-background-color: #177578;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 7 20;
+    -fx-font-family: 'Raleway', sans-serif;
+    -fx-font-size: 14px;
+}
+
+.button:hover {
+    -fx-background-color: #4BC6B9;
+}
+
+.button:focused {
+    -fx-border: none;
+}
+
+
+
+/*.scene {
+      --pink: rgba(162, 132, 151, 1);
+      --cream: rgba(234, 242, 239, 1);
+      --light-blue: rgba(76, 152, 197, 1);
+      --medium-blue: rgba(4, 113, 166, 1);
+      --dark-blue: rgba(6, 24, 38, 1);
+      --light-grey: rgba(0, 0, 0, 0.1);
+      --medium-grey: rgba(0, 0, 0, 0.3);
+      --dark-grey: rgba(0, 0, 0, 0.5);
+      --transparent-white: rgba(255, 255, 255, 0.5);
+}*/

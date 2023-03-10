@@ -1,5 +1,4 @@
 package net.codebot.application
-
 import javafx.scene.control.TextArea
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select

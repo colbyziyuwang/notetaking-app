@@ -88,6 +88,20 @@ class Model {
         note.save()
     }
 
-
+    fun accessDB() {
+        //an example connection to H2 DB
+        Database.connect("jdbc:sqlite:notesData.db")
+        //            transaction {
+        //                // print sql to std-out
+        //                addLogger(StdOutSqlLogger)
+        //                SchemaUtils.create (Cities)
+        //                // insert new city. SQL: INSERT INTO Cities (name) VALUES ('St. Petersburg')
+        //                val stPeteId = Cities.insert {
+        //                    it[name] = "St. Petersburg"
+        //                } get Cities.id
+        //                // 'select *' SQL: SELECT Cities.id, Cities.name FROM Cities
+        //                println("Cities: ${Cities.selectAll()}")
+        //            }
+    }
 
 }

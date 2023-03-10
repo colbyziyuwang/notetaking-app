@@ -9,11 +9,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class Main : Application() {
     override fun start(stage: Stage?) {
-        // need to create database
-
-        // create database if it doesn't already exist
+        // Local Settings database
         Database.connect("jdbc:sqlite:localSettings.db")
-
         transaction {
             // create a table that reflects our table structure
             SchemaUtils.create(LocalSettings)
@@ -28,13 +25,23 @@ class Main : Application() {
            //}
         }
 
+
+        //
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
+
+
+
+
+
+
         val model = Model()
+        model.accessDB()
         val currentView = CurrentView(model)
         stage?.scene = Scene(currentView.curView, 500.0, 350.0)
         stage?.title = "NoteTaking application"
         stage?.show()
     }
 }
+

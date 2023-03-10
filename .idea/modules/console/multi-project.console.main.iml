@@ -45,7 +45,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
     <output url="file://$MODULE_DIR$/../../../console/build/classes/java/main" />
     <exclude-output />
     <output url="file://$MODULE_DIR$/../../../console/build/classes/java/main" />
@@ -54,7 +54,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../console/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../console/src/main/kotlin" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="multi-project.shared.main" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.20" level="project" />

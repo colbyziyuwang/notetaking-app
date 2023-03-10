@@ -12,6 +12,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.main.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.main.iml" filepath="$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.test.iml" filepath="$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.test.iml" />
     </modules>
   </component>
 </project>

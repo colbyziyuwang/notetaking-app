@@ -1,8 +1,9 @@
 package net.codebot.application
 import javafx.scene.control.TextArea
+import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.update
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-
 
 
 class Notes{
@@ -13,6 +14,7 @@ class Notes{
     private var lastModifiedDate = creationDate // Corresponds to the date the note was last modified
     private var data = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
 
+    private var caratPOS = 0 // The current position of the carat
 
 
     // undo / redo handler
@@ -87,16 +89,25 @@ class Notes{
     //  Call when note is edited
     //  TODO: need a system to update text such that state of text in UI is accurately reflected in text
 
-    fun updateData(text: TextArea) {
+    fun updateData(text: TextArea, carat: Int) {
         this.data = text
+        this.caratPOS = carat
         //parseForCode()
         //parseForLatex()
     }
 
     // update note name
     fun updateNoteName(noteNa: String) {
+        val oldName = this.noteName
         this.noteName = noteNa
+        // update database
+        transaction {
+            LocalSettings.update({LocalSettings.noteName eq oldName}) {
+                it[noteName] = noteNa
+            }
+        }
     }
+
 
     // Deletes the current note (likely we do not need this function)
     // idea: implement delete inside the folder class
@@ -122,6 +133,11 @@ class Notes{
 
     // save
     fun save() {
-        // TODO: Saves the current state of the data/note
+        //TODO
+    }
+
+    //returns the position of the carat of the text area
+    fun getCarat(): Int{
+        return caratPOS
     }
 }

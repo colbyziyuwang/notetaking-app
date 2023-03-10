@@ -1,18 +1,15 @@
 package net.codebot.application
+import javafx.beans.value.ChangeListener
 import javafx.event.EventHandler
 import javafx.geometry.Pos
-import javafx.scene.Scene
 import javafx.scene.control.Button
-import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
 import javafx.scene.control.ToolBar
 import javafx.scene.input.KeyCode
-import javafx.scene.input.KeyEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
-import javafx.stage.Stage
 
 class NoteView (private val model: Model) : VBox(), IView{
 
@@ -31,7 +28,6 @@ class NoteView (private val model: Model) : VBox(), IView{
 
     val dataArea = TextArea() // holds the visual aspects of the data
     val dataContainer = VBox()
-
 
     override fun updateView() {
         // get the items
@@ -70,6 +66,7 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         outmostPane.top = noteToolBar
         outmostPane.center = dataArea
+
     }
 
 
@@ -98,8 +95,8 @@ class NoteView (private val model: Model) : VBox(), IView{
         }
 
         dataArea.setOnKeyTyped {
-            model.updateData(dataArea)
-            dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
+            model.updateData(dataArea, dataArea.caretPosition)
+            dataArea.positionCaret(model.getCaratPOS()) //fixing cursor postion
         }
 
 
@@ -109,22 +106,4 @@ class NoteView (private val model: Model) : VBox(), IView{
         model.addView(this)
     }
 
-    /* Toolbar template
-    *         val toolBar = ToolBar(
-            Button("New"),
-            Button("Open"),
-            Button("Save")
-        )
-        val border = BorderPane()
-        border.top = toolBar
-
-        stage.scene = Scene(
-            border,//StackPane(Label("Hello ${SysInfo.userName}")),
-            250.0,
-            150.0)
-        stage.isResizable = false
-        val note1 = Notes()
-
-        stage.title = note1.getLastModifiedDate() // Displaying the current date for now.
-    * */
 }

@@ -1,5 +1,6 @@
 package net.codebot.application
 import javafx.application.Application
+import javafx.beans.value.ChangeListener
 import javafx.scene.Scene
 import javafx.stage.Stage
 import org.jetbrains.exposed.sql.Database
@@ -35,6 +36,20 @@ class Main : Application() {
         val currentView = CurrentView(model)
         stage?.scene = Scene(currentView.curView, 500.0, 350.0)
         stage?.title = "NoteTaking application"
+
+        // detect size change
+        val stageSizeListener: ChangeListener<Number> = ChangeListener<Number> { observable, oldValue, newValue ->
+            // The next line is supposed to get the name of currently displayed note
+            val name = model.getItems().getNoteName()
+            model.updateSize(name, stage!!.getHeight(), stage!!.getWidth())
+            print(stage!!.getHeight())
+            print("\n")
+            print(stage!!.getWidth())
+        }
+
+        stage?.widthProperty()?.addListener(stageSizeListener)
+        stage?.heightProperty()?.addListener(stageSizeListener)
+
         stage?.show()
     }
 }

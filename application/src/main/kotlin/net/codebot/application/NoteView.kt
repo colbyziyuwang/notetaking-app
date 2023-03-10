@@ -66,15 +66,6 @@ class NoteView (private val model: Model) : VBox(), IView{
         outmostPane.top = noteToolBar
         outmostPane.center = dataArea
 
-        // detect size change
-        val stageSizeListener: ChangeListener<Number> = ChangeListener<Number> { observable, oldValue, newValue ->
-            val name = note.getNoteName()
-            model.updateSize(name, outmostPane.getHeight(), outmostPane.getWidth())
-        }
-
-        outmostPane.widthProperty().addListener(stageSizeListener)
-        outmostPane.heightProperty().addListener(stageSizeListener)
-
     }
 
 

@@ -45,7 +45,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
     <output url="file://$MODULE_DIR$/../../../console/build/classes/java/main" />
     <exclude-output />
     <output url="file://$MODULE_DIR$/../../../console/build/classes/java/main" />

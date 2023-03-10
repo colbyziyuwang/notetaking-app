@@ -42,7 +42,7 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainModule.set("application")
-    mainClass.set("net.codebot.application.Main")
+    mainClass.set("net.codebot.application.MainApp")
 }
 
 

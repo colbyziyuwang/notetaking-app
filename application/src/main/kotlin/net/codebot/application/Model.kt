@@ -57,7 +57,7 @@ class Model {
             if (n.getNoteName() == note){
                 n.updateData(data, caratPOS)
                 notifyObservers()
-                return
+                return //Debugging may need to be replaced
             }
         }
         notifyObservers()
@@ -104,15 +104,27 @@ class Model {
         return result
     }
     //returns the position of the carat
-    fun getCaratPOS(): Int {
-        return note.getCarat()
+    fun getCaratPOS(noteName: String): Int {
+        var caratPOS = 0
+        for(n in notes) {
+            if (noteName == n.getNoteName()) {
+                caratPOS = n.getCarat()
+            }
+        }
+
+        return caratPOS
     }
 
 
 
     //will invoke the save function of the note
-    fun saveData(){
-        note.save()
+    fun saveData(noteName: String){
+        for(n in notes){
+            if (noteName == n.getNoteName()){
+                n.save()
+                return
+            }
+        }
     }
 
 
@@ -122,9 +134,15 @@ class Model {
         file.writeText("Add your text here...")
     }
 
-    fun loadData(){
-        note.loadData()
-        notifyObservers()
+    fun loadData(noteName: String){
+        for(n in notes){
+            if (noteName == n.getNoteName()){
+                n.loadData()
+                notifyObservers()
+                return
+            }
+        }
+
     }
 
 }

@@ -66,5 +66,4 @@ internal class DirectoryView(private val model: Model, private var curNote: CurN
     }
 }
 
-//Questions for Jeff
-// Why internal? Why do we inherit from IView and VBOX, and why do we need IVeiw?
+

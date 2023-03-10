@@ -57,7 +57,7 @@ class NoteView (private val model: Model) : VBox(), IView{
             }
 
             dataArea.setOnKeyTyped {
-                model.updateData(curNote.note!!.getNoteName(), dataArea)
+                model.updateData(curNote.note!!.getNoteName(), dataArea, curNote.note!!.getCarat())
                 dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
             }
 
@@ -147,6 +147,11 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         //registering view with the model when ready to start receiving data
         model.addView(this)
+    }
+
+
+    fun getCurNote(): CurNote{
+        return curNote
     }
 
 }

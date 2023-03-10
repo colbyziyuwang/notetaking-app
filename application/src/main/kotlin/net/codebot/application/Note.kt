@@ -15,7 +15,7 @@ class Note(
     // Properties
     private val creationDate = getCurrentDate()
     private var lastModifiedDate = creationDate
-
+    private var caratPOS = 0
 
     // undo / redo handler
     private data class State(val data: String)

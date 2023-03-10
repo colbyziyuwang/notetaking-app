@@ -1,7 +1,11 @@
 package net.codebot.application
 import javafx.application.Application
 import javafx.beans.value.ChangeListener
+import javafx.event.EventHandler
 import javafx.scene.Scene
+import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyCodeCombination
+import javafx.scene.input.KeyCombination
 import javafx.stage.Stage
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
@@ -17,7 +21,7 @@ class Main : Application() {
         Database.connect("jdbc:sqlite:localSettings.db")
 
         transaction {
-            // create a table that reflects our table structure
+            // create a table that reflects our table structurez
             SchemaUtils.create(LocalSettings)
 
             // remove previous values

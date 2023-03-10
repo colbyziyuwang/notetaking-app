@@ -7,15 +7,14 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-class Notes{
+class Note(
+    private var noteName: String = "New Note",
+    private var data: TextArea = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
+){
 
     // Properties
-    private var noteName = "New Note"
-    private val creationDate = getCurrentDate()  // Corresponds to the date the Note was created, never changed post init
-    private var lastModifiedDate = creationDate // Corresponds to the date the note was last modified
-    private var data = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
-
-    private var caratPOS = 0 // The current position of the carat
+    private val creationDate = getCurrentDate()
+    private var lastModifiedDate = creationDate
 
 
     // undo / redo handler
@@ -108,7 +107,6 @@ class Notes{
             }
         }
     }
-
 
     // Deletes the current note (likely we do not need this function)
     // idea: implement delete inside the folder class

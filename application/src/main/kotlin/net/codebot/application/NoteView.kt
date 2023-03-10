@@ -21,7 +21,17 @@ class NoteView (private val model: Model) : VBox(), IView{
     //       when context change happens push new buttons onto array
     //       (generalize adding buttons to pushing in array)
     private var curNote = CurNote()
-    private val createButton = Button("?")
+
+    private val createButton = Button("?").apply {
+        text = "Create" //Text
+        font = Font("Helvetica", 11.0) //Fonts
+
+        //Button Actions
+        setOnMouseClicked {
+            model.createNote(nameTextBox.text)
+        }
+    }
+
     private val editButton = Button("?")
     private val deleteButton = Button("?")
     private val loadButton = Button("?")

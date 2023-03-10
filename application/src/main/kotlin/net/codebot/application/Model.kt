@@ -4,6 +4,7 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
+import java.io.File
 
 class Model {
 
@@ -88,5 +89,15 @@ class Model {
     }
 
 
+    fun createSaveFile(){
+        val fileName = "NoteSave.txt"
+        var file = File(fileName)
+        file.writeText("Add your text here...")
+    }
+
+    fun loadData(){
+        note.loadData()
+        notifyObservers()
+    }
 
 }

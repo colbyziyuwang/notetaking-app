@@ -21,6 +21,7 @@ class NoteView (private val model: Model) : VBox(), IView{
     private val createButton = Button("?")
     private val editButton = Button("?")
     private val deleteButton = Button("?")
+    private val loadButton = Button("?")
 
     private val toolBar = ToolBar() //Toolbar
 
@@ -28,6 +29,9 @@ class NoteView (private val model: Model) : VBox(), IView{
 
     val dataArea = TextArea() // holds the visual aspects of the data
     val dataContainer = VBox()
+
+
+    val saveButton = Button("Save")
 
     override fun updateView() {
         // get the items
@@ -57,12 +61,14 @@ class NoteView (private val model: Model) : VBox(), IView{
         }
 
 
+
+
         //TODO: Once copy/paste is complete
         //val copyButton = Button("Copy")
         //val pasteButton = Button("Paste")
 
         val noteToolBar = ToolBar() //Toolbar
-        noteToolBar.items.addAll(undoButton, redoButton)//, copyButton, pasteButton)
+        noteToolBar.items.addAll(undoButton, redoButton, saveButton)//, copyButton, pasteButton)
 
         outmostPane.top = noteToolBar
         outmostPane.center = dataArea
@@ -79,12 +85,14 @@ class NoteView (private val model: Model) : VBox(), IView{
         createButton.text = "Create" //Text
         editButton.text = "Edit"
         deleteButton.text = "Delete"
+        loadButton.text = "Load"
 
         createButton.font = Font("Helvetica", 11.0) //Fonts
         editButton.font = Font("Helvetica", 11.0)
         deleteButton.font = Font("Helvetica", 11.0)
+        loadButton.font = Font("Helvetica", 11.0)
 
-        toolBar.items.addAll(createButton, editButton, deleteButton) //adding to toolbar
+        toolBar.items.addAll(createButton, editButton, deleteButton, loadButton) //adding to toolbar
 
         outmostPane.center = toolBar // Adding to the outer box
 
@@ -92,6 +100,16 @@ class NoteView (private val model: Model) : VBox(), IView{
         //View Controller*************************************************************************************
         createButton.setOnMouseClicked {
             model.createNote()
+            model.createSaveFile()
+        }
+
+        loadButton.setOnMouseClicked {
+            model.createNote()
+            model.loadData()
+        }
+
+        saveButton.setOnMouseClicked {
+            model.saveData()
         }
 
         dataArea.setOnKeyTyped {

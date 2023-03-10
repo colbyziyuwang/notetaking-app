@@ -2,6 +2,7 @@ package net.codebot.application
 import javafx.scene.control.TextArea
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
+import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -126,14 +127,18 @@ class Notes{
         // TODO: use api or something to check for Latex encased in $$ $$
     }
 
-    // restore
-    fun restore(){
-        // TODO: restores data to previous state?
+    // loads saved version of data
+    fun loadData(){
+        val file = File("NoteSave.txt")
+        var content:String = file.readText()
+        data.text = content
     }
 
     // save
     fun save() {
-        //TODO
+        val fileName = "NoteSave.txt"
+        var file = File(fileName)
+        file.writeText(data.text) //saving current state of text to file
     }
 
     //returns the position of the carat of the text area

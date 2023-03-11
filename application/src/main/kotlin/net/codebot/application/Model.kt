@@ -71,31 +71,8 @@ class Model {
 
 
 
-    // update the size of the document in the database
-    fun updateSize(noteNa: String, wid: Double, hei: Double) {
-        transaction {
-            LocalSettings.update({LocalSettings.noteName eq noteNa}) {
-                it[width] = wid
-                it[height] = hei
-            }
-        }
-    }
 
-    // find the size of a note in the database
-    fun getSize(noteNa: String): ArrayList<Double> {
-        val result = ArrayList<Double>(2)
-        var width: Double = 0.0
-        var height: Double = 0.0
-        transaction {
-            val select = LocalSettings.select{LocalSettings.noteName eq noteNa}
-            val re = select.first()
-            width = re.get<Double>(LocalSettings.width)
-            height = re.get<Double>(LocalSettings.height)
-        }
-        result[0] = width
-        result[1] = height
-        return result
-    }
+
     //returns the position of the carat
     fun getCaratPOS(noteName: String): Int {
         var caratPOS = 0

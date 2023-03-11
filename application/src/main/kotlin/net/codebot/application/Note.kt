@@ -100,12 +100,7 @@ class Note(
     fun updateNoteName(noteNa: String) {
         val oldName = this.noteName
         this.noteName = noteNa
-        // update database
-        transaction {
-            LocalSettings.update({LocalSettings.noteName eq oldName}) {
-                it[noteName] = noteNa
-            }
-        }
+        // update database HERE
     }
 
     // Deletes the current note (likely we do not need this function)

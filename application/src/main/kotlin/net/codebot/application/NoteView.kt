@@ -54,7 +54,8 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         if(curNote.note == null){
             children.setAll(directoryViewPane)
-        } else {
+        }
+        else {
             // display Note text
             val text = Text(curNote.note!!.getData().text)
             text.font = Font("Helvetica", 12.0)

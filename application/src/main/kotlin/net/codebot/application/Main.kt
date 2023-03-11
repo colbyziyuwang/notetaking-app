@@ -16,11 +16,10 @@ class Main : Application() {
     override fun start(stage: Stage) {
 
         //TODO: Replace below with a database
-        // Text file for settings
 
 
         // TODO  :need to create database
-        //Database connection
+        //Establishing Database connection
         Database.connect("jdbc:sqlite:noteData.db", "org.sqlite.JDBC")
 
         transaction {

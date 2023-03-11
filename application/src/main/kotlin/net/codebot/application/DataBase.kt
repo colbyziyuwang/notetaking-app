@@ -39,7 +39,9 @@ class DataBaseDAO {
     //TODO
 
     //ADD a note to the DataBase
-    //TODO
+    fun addNote(note){
+
+    }
 
     //Return note by name
     //TODO

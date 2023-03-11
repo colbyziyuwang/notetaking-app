@@ -41,13 +41,6 @@ class Model {
 
     fun createNote(name: String){ //Redundant?
         notes.add(Note(name))
-        transaction {
-            LocalSettings.insert {
-                it[noteName] = "New Note"
-                it[width] = 500.0
-                it[height] = 350.0
-            }
-        }
         notifyObservers()
     }
 

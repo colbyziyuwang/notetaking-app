@@ -18,38 +18,58 @@ class Model {
     }
 
     // Notify all views that data has been changed
-    private fun notifyObservers(){
-
+    fun notifyObservers(){
        for (view in views){
            view.updateView()
        }
     }
 
+    private var notes = ArrayList<Note>()
 
-    private var note = Notes()//For now Model will have one field that is the note
+    init {
+        // add some notes for debugging
+        notes.add(Note("Note 1", TextArea("This is the first note")))
+        notes.add(Note("Note 2", TextArea("This is the second note")))
+        notes.add(Note("Note 3", TextArea("This is the third note")))
 
-    //returns the items of the model (For demo1 this is the one note)
-    fun getItems():Notes {
-        return note
     }
 
-    fun createNote(){ //Redundant?
-        note = Notes()
-        // insert into database
-        transaction {
-            LocalSettings.insert {
-                it[noteName] = "New Note"
-                it[width] = 500.0
-                it[height] = 350.0
+    //returns the items of the model (For demo1 this is the one note)
+    fun getItems(): ArrayList<Note> {
+        return notes
+    }
+
+    fun createNote(name: String){ //Redundant?
+        notes.add(Note(name))
+        notifyObservers()
+    }
+
+    fun updateData(note: String, data: TextArea,  caratPOS: Int){
+        // updates the data of the note for now
+        for (n in notes){
+            if (n.getNoteName() == note){
+                n.updateData(data, caratPOS)
+                notifyObservers()
+                return //Debugging may need to be replaced
             }
         }
         notifyObservers()
     }
 
-    fun updateData(data: TextArea, caratPOS: Int){
-        note.updateData(data, caratPOS)
-        notifyObservers()
+    // delete note by name
+    fun deleteNoteByName(name: String){
+        for (note in notes){
+            if (note.getNoteName() == name){
+                notes.remove(note)
+                notifyObservers()
+                return
+            }
+        }
     }
+
+    // edit note by name
+
+
 
     // update the size of the document in the database
     fun updateSize(noteNa: String, wid: Double, hei: Double) {
@@ -77,15 +97,27 @@ class Model {
         return result
     }
     //returns the position of the carat
-    fun getCaratPOS(): Int {
-        return note.getCarat()
+    fun getCaratPOS(noteName: String): Int {
+        var caratPOS = 0
+        for(n in notes) {
+            if (noteName == n.getNoteName()) {
+                caratPOS = n.getCarat()
+            }
+        }
+
+        return caratPOS
     }
 
 
 
     //will invoke the save function of the note
-    fun saveData(){
-        note.save()
+    fun saveData(noteName: String){
+        for(n in notes){
+            if (noteName == n.getNoteName()){
+                n.save()
+                return
+            }
+        }
     }
 
 
@@ -95,9 +127,15 @@ class Model {
         file.writeText("Add your text here...")
     }
 
-    fun loadData(){
-        note.loadData()
-        notifyObservers()
+    fun loadData(noteName: String){
+        for(n in notes){
+            if (noteName == n.getNoteName()){
+                n.loadData()
+                notifyObservers()
+                return
+            }
+        }
+
     }
 
 }

@@ -4,14 +4,14 @@ class FolderTest {
     @Test
     fun testAddDelete() {
         val folder1 = Folder()
-        val file1 = Notes()
+        val file1 = Note()
 
         folder1.addFile(file1)
 
         assert(folder1.folderFiles.size == 1)
 
         val folder2 = Folder()
-        val file2 = Notes()
+        val file2 = Note()
 
         folder1.addFile(file2)
         folder1.deleteFile(file2)
@@ -22,7 +22,7 @@ class FolderTest {
     @Test
     fun testSearch() {
         val folder1 = Folder()
-        val file1 = Notes()
+        val file1 = Note()
         file1.updateNoteName("note for cs346")
         folder1.addFile(file1)
 
@@ -31,7 +31,7 @@ class FolderTest {
         assert(result.size == 1)
 
         val folder2 = Folder()
-        val file2 = Notes()
+        val file2 = Note()
         folder2.addFile(file2)
 
         val result2 = folder2.searchFileByContent("Add your text")
@@ -42,9 +42,9 @@ class FolderTest {
     @Test
     fun testSort() {
         val folder = Folder()
-        val file1 = Notes()
+        val file1 = Note()
         file1.updateNoteName("note for cs346")
-        val file2 = Notes()
+        val file2 = Note()
         file2.updateNoteName("cs346 note")
         folder.addFile(file1)
         folder.addFile(file2)

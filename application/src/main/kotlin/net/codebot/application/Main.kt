@@ -14,66 +14,56 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import java.io.File
 
 class Main : Application() {
-    override fun start(stage: Stage?) {
-        // files for settings
+    override fun start(stage: Stage) {
+
+        //TODO: Replace below with a database
+        // Text file for settings
         val fileName = "NoteSettings.txt"
         var file = File(fileName)
 
-        // need to create database
-
-        // create database if it doesn't already exist
-        Database.connect("jdbc:sqlite:localSettings.db")
-
-        transaction {
-            // create a table that reflects our table structurez
-            SchemaUtils.create(LocalSettings)
-
-            // remove previous values
-            LocalSettings.deleteAll()
-
-            //LocalSettings.insert {
-                //it[noteName] = "New Note"
-                //it[width] = 500
-                //it[height] = 350
-           //}
-        }
+        // TODO  :need to create database
 
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
+        //CSS styling artifacts
         val darkComb = KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN)
         val lightComb = KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN)
 
+        //Model generation
         val model = Model()
         val currentView = CurrentView(model)
+
+        //Applying window settings to load stored window size
         val content: List<String> = file.readLines()
-        val wid: Double = content[0].toDouble()
-        val hei: Double = content[1].toDouble()
-        val scene = Scene(currentView.curView, wid, hei)
+        val width: Double = content[0].toDouble()
+        val height: Double = content[1].toDouble()
+        val scene = Scene(currentView.curView, width, height)
 
         //Styling using CSS
         scene.stylesheets.add("defaultStyle.css")
         //scene.stylesheets.add("darkMode.css")
 
-        stage?.scene = scene
-        stage?.title = "NoteTaking application"
+        stage.scene = scene
+        stage.title = "NoteTaking application"
 
-        // detect size change
+        // Detects changes in the window size and updates it in the file
+        // TODO: Change listeners to listen to the scene not the stage
         val stageSizeListener: ChangeListener<Number> = ChangeListener<Number> { observable, oldValue, newValue ->
             // The next line is supposed to get the name of currently displayed note
-            val name = model.getItems().getNoteName()
-            model.updateSize(name, stage!!.getHeight(), stage!!.getWidth())
-            print(stage!!.getHeight())
+            val name = currentView.curView.getCurNote().note!!.getNoteName()
+            model.updateSize(name, stage!!.getHeight(), stage.getWidth())
+            print(stage!!.getHeight()) //prints to log for developer usage
             print("\n")
             print(stage!!.getWidth())
-            val s1: String = "" + stage!!.getHeight()
-            val s2: String = "" + stage!!.getWidth()
+            val s1: String = "" + stage.getHeight()
+            val s2: String = "" + stage.getWidth()
             val s3: String = s1 + "\n" + s2
             file.writeText(s3)
         }
 
-        stage?.widthProperty()?.addListener(stageSizeListener)
-        stage?.heightProperty()?.addListener(stageSizeListener)
+        stage.widthProperty().addListener(stageSizeListener)
+        stage.heightProperty().addListener(stageSizeListener)
 
         stage?.show()
 

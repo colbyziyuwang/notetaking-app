@@ -2,6 +2,7 @@ package net.codebot.application
 
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.*
 
 
@@ -27,25 +28,68 @@ object DataBase : Table() {
 
 //Defines all the functions to interact with the DataBase modularly
 class DataBaseDAO {
+    //Connects to a pre-existing database and readies it to be manipulated
+    fun connectDB(){
+        Database.connect("jdbc:sqlite:noteData.db", "org.sqlite.JDBC")
+        transaction {
+            SchemaUtils.create(DataBase)
+        }
+    }
+
     // Update all fields of a note whenever any field is modified
     // TODO
-    fun updateNote() {
+    fun updateNote(note: Note) {
         transaction {
-
+            DataBase.update({DataBase.name eq note.getNoteName()}){ row ->
+                row[name] = note.getNoteName()
+                row[content] = note.getData().text
+                row[caratPosition] = note.getCarat()
+                row[creationDate] = note.getCreationDate()
+                row[lastModifiedDate] = note.getLastModifiedDate()
+                row[winWidth] = note.getWinSize()[0] // corresponds to the width of a note
+                row[winHeight] = note.getWinSize()[1]
+            }
         }
     }
 
     // return the height and width of a note in the database
-    //TODO
-
-    //ADD a note to the DataBase
-    fun addNote(note){
-
+    fun getWidthHeight(note: Note): Array<Double> {
+        return transaction {//returning the returned value of the transaction block
+            val row = DataBase.select { DataBase.name eq note.getNoteName() }.single() // Names should be unique in database
+            val width = row[DataBase.winWidth]
+            val height = row[DataBase.winHeight]
+            return@transaction arrayOf(width, height) //returning value from transaction
+        }
     }
 
-    //Return note by name
-    //TODO
+    //ADD a note to the DataBase
+    fun addNote(note: Note){
+        transaction {
+            DataBase.insert { newRow ->
+                newRow[name] = note.getNoteName()
+                newRow[content] = note.getData().text
+                newRow[caratPosition] = note.getCarat()
+                newRow[creationDate] = note.getCreationDate()
+                newRow[lastModifiedDate] = note.getLastModifiedDate()
+                newRow[winWidth] = note.getWinSize()[0] // corresponds to the width of a note
+                newRow[winHeight] = note.getWinSize()[1]
+            }
+        }
+    }
 
     //Delete a note from the database
+    fun deleteNote(note: Note){
+        transaction {
+            DataBase.deleteWhere { DataBase.name eq note.getNoteName()}
+        }
+    }
+
+    //Deletes all notes in the database
+    fun deleteAllNotes(){
+        DataBase.deleteAll()
+    }
+
+
+    //Return note by name
     //TODO
 }

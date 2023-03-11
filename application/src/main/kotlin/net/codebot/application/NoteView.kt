@@ -9,18 +9,10 @@ import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
 
-class CurNote {
-    public var note: Note? = null
-}
 
 class NoteView (private val model: Model) : VBox(), IView{
 
-    //Starting off buttons in unknown state as advised by example MVC
-
-    //Jerry: Make this more abstract with a dynamic array of buttons,
-    //       when context change happens push new buttons onto array
-    //       (generalize adding buttons to pushing in array)
-    private var curNote = CurNote()
+    private var currentNote: Note? = null
 
     private val createButton = Button("?").apply {
         text = "Create" //Text
@@ -50,7 +42,6 @@ class NoteView (private val model: Model) : VBox(), IView{
     val saveButton = Button("Save")
 
     override fun updateView() {
-//        println("curNote: ${curNote.note?.getNoteName() ?: "null"}")
 
         if(curNote.note == null){
             children.setAll(directoryViewPane)
@@ -133,26 +124,6 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         children.setAll(directoryViewPane)
 
-
-
-
-
-//        // buttons for note manipulation
-//        val undoButton = Button("Undo")
-//        undoButton.setOnMouseClicked {
-//            model.getItem().undoState()
-//            println("undo")
-//        }
-//        val redoButton = Button("Redo")
-//        redoButton.setOnMouseClicked {
-//            model.getItem().redoState()
-//            println("redo")
-//        }
-//
-//        val noteToolBar = ToolBar() //Toolbar
-//        noteToolBar.items.addAll(undoButton, redoButton)//, copyButton, pasteButton)
-//        outmostPane.top = noteToolBar
-//        outmostPane.center = dataArea
 
         //TODO : Implement Edit and Delete note actions
 

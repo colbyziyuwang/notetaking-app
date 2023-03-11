@@ -20,20 +20,11 @@ class Main : Application() {
 
         // TODO  :need to create database
         //Establishing Database connection
-        Database.connect("jdbc:sqlite:noteData.db", "org.sqlite.JDBC")
+        val dataBaseDAO = DataBaseDAO()
+        dataBaseDAO.connectDB()
 
-        transaction {
-            SchemaUtils.create(DataBase)
-            DataBase.insert { newRow ->
-                newRow[name] = "Test File"
-                newRow[content] = "This is testing text content for my test file"
-                newRow[caratPosition] = 69
-                newRow[creationDate] = "yo mama"
-                newRow[lastModifiedDate] = "joe mama"
-                newRow[winWidth] = 700.0
-                newRow[winHeight] = 900.0
-            }
-        }
+
+
 
         //accessing stuff from database//DEBUGGING
         transaction {

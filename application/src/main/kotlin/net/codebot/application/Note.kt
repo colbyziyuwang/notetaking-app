@@ -16,6 +16,8 @@ class Note(
     private val creationDate = getCurrentDate()
     private var lastModifiedDate = creationDate
     private var caratPOS = 0
+    private var winWidth = 500.0
+    private var winHeight = 500.0
 
     // undo / redo handler
     private data class State(val data: String)
@@ -137,5 +139,9 @@ class Note(
     //returns the position of the carat of the text area
     fun getCarat(): Int{
         return caratPOS
+    }
+
+    fun getWinSize(): Array<Double>{
+        return arrayOf(this.winWidth, this.winHeight)
     }
 }

@@ -12,6 +12,7 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.io.File
+import java.sql.DriverManager
 
 class Main : Application() {
     override fun start(stage: Stage) {

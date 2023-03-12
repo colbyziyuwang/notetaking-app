@@ -32,11 +32,8 @@ class Model {
         dao.deleteAllNotes() //emptying database
         // add some notes for debugging
         createNote("Note 1")
-        addDataToDB("Note 1")
         createNote("Note 2")
-        addDataToDB("Note 2")
         createNote("Note 3")
-        addDataToDB("Note 3")
     }
 
     //returns the items of the model (For demo1 this is the one note)
@@ -48,6 +45,7 @@ class Model {
         var note = Note(name)
         notes.add(note)
         notifyObservers()
+        addDataToDB(name)
     }
 
     fun updateData(note: String, data: TextArea,  caratPOS: Int){
@@ -64,8 +62,10 @@ class Model {
 
     // delete note by name
     fun deleteNoteByName(name: String){
+        val dao = DataBaseDAO()
         for (note in notes){
             if (note.getNoteName() == name){
+                dao.deleteNote(note)
                 notes.remove(note)
                 notifyObservers()
                 return
@@ -96,6 +96,7 @@ class Model {
                 return
             }
         }
+        notifyObservers()
     }
 
     //Adds note data to DB
@@ -118,9 +119,19 @@ class Model {
 
     }
 
-    //Sets the current note
+    //Sets the current note from our list of notes
     fun setCurrentNote(note: Note?){
-        currentNote = getNote(note!!.getNoteName())
+        for (n in notes){
+            if(n.getNoteName() == note!!.getNoteName()){
+                currentNote = n
+            }
+        }
+        notifyObservers()
+
+    }
+
+    fun removeCurrentNote(){
+        currentNote = null
     }
 
     //Gets the current note
@@ -129,9 +140,18 @@ class Model {
     }
 
     //returns the requisite note from the DB
-    fun getNote(name: String): Note{
+    fun getNoteDB(name: String): Note{
         val dao = DataBaseDAO()
         return dao.getNote(name)
+    }
+
+    //updates all notes in our list of notes to their Database versions
+    fun updateNotes(){
+        val dao = DataBaseDAO()
+        for(i in notes.indices){
+            notes[i] = dao.getNote(notes[i].getNoteName()) // updates each note to its database version
+        }
+        notifyObservers()
     }
 
 }

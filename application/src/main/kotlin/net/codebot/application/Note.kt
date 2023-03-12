@@ -151,6 +151,7 @@ class Note(
     fun save() {
         val dao = DataBaseDAO()
         dao.updateNote(this)
+        println("${this.getNoteName()} updated in the database")
     }
 
     //Adds note to Data base

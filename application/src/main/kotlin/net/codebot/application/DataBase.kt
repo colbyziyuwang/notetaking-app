@@ -41,6 +41,7 @@ class DataBaseDAO {
     fun updateNote(note: Note) {
         val db = connectDB()
         transaction {
+            //TODO: Check that note exists and if it doesnt insert it
             DataBase.update({DataBase.name eq note.getNoteName()}){ row ->
                 row[name] = note.getNoteName()
                 row[content] = note.getData().text
@@ -69,15 +70,18 @@ class DataBaseDAO {
     fun addNote(note: Note){
         val db = connectDB()
         transaction {
-            DataBase.insert { newRow ->
-                newRow[name] = note.getNoteName()
-                newRow[content] = note.getData().text
-                newRow[caratPosition] = note.getCarat()
-                newRow[creationDate] = note.getCreationDate()
-                newRow[lastModifiedDate] = note.getLastModifiedDate()
-                newRow[winWidth] = note.getWinSize()[0] // corresponds to the width of a note
-                newRow[winHeight] = note.getWinSize()[1]
+            if(DataBase.select {DataBase.name eq note.getNoteName()}.empty()){ // Adding to the database only if note name doesnt already exist
+                DataBase.insert { newRow ->
+                    newRow[name] = note.getNoteName()
+                    newRow[content] = note.getData().text
+                    newRow[caratPosition] = note.getCarat()
+                    newRow[creationDate] = note.getCreationDate()
+                    newRow[lastModifiedDate] = note.getLastModifiedDate()
+                    newRow[winWidth] = note.getWinSize()[0] // corresponds to the width of a note
+                    newRow[winHeight] = note.getWinSize()[1]
+                }
             }
+
         }
         TransactionManager.closeAndUnregister(db)
     }

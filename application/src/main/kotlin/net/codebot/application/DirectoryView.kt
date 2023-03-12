@@ -30,12 +30,12 @@ internal class DirectoryView(private val model: Model) : VBox(), IView{
             setOnAction {
                 // go into note view
                 model.setCurrentNote(note)
-                model.notifyObservers()
                 println("Edit button pressed with Note name: ${note.getNoteName()}")
             }
         }
     }
 
+    //Generates a scrollable view of notes in our list of notes
     override fun updateView() {
         children.clear()
         // get list of nodes from model

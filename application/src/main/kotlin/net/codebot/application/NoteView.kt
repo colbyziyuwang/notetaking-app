@@ -20,7 +20,15 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         //Button Actions
         setOnMouseClicked {
-            model.createNote(nameTextBox.text)
+            ////TODO: Check for duplicate named note and throw appropriate errors
+
+
+            if(nameTextBox.text.isEmpty()){
+                model.createNote("New Note") //TODO
+            }
+            else{
+                model.createNote(nameTextBox.text)
+            }
         }
     }
 
@@ -54,7 +62,9 @@ class NoteView (private val model: Model) : VBox(), IView{
             text.wrappingWidth = 350.0
 
             dataArea.text = text.text
-
+            val temp = curNote.getCarat() //debugging
+            dataArea.positionCaret(temp)
+            println("Positioned caret at ${temp}") //debugging
             dataArea.onKeyPressed = EventHandler { event ->
                 if (event.code == KeyCode.SPACE) curNote!!.saveState()
             }
@@ -78,13 +88,14 @@ class NoteView (private val model: Model) : VBox(), IView{
 
             val closeButton = Button("Close")
             closeButton.setOnMouseClicked {
-                model.setCurrentNote(null)
-                model.notifyObservers()
+                model.removeCurrentNote()
+                model.updateNotes()
             }
 
+
             saveButton.setOnMouseClicked {
+                println("Caret position is ${curNote.getData().caretPosition}") //debugging
                 model.saveData(curNote.getNoteName())
-                model.notifyObservers()
             }
 
             //TODO: Once copy/paste is complete
@@ -119,8 +130,8 @@ class NoteView (private val model: Model) : VBox(), IView{
             hbarPolicy = ScrollPane.ScrollBarPolicy.NEVER
             vbarPolicy = ScrollPane.ScrollBarPolicy.ALWAYS
             // pref height
-            prefHeight = 300.0
-            isFitToWidth = true;
+            isFitToHeight = true
+            isFitToWidth = true
         }
 
         children.setAll(directoryViewPane)

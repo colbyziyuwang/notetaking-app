@@ -25,6 +25,7 @@ class Model {
     }
 
     private var notes = ArrayList<Note>()
+    private var currentNote: Note? = null
 
     init {
         // add some notes for debugging
@@ -67,11 +68,6 @@ class Model {
         }
     }
 
-    // edit note by name
-
-
-
-
 
     //returns the position of the carat
     fun getCaratPOS(noteName: String): Int {
@@ -113,6 +109,16 @@ class Model {
             }
         }
 
+    }
+
+    //Sets the current note
+    fun setCurrentNote(note: Note?){
+        currentNote = note
+    }
+
+    //Gets the current note
+    fun getCurrentNote(): Note? {
+        return currentNote
     }
 
 }

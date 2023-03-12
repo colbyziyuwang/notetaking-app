@@ -42,42 +42,43 @@ class NoteView (private val model: Model) : VBox(), IView{
     val saveButton = Button("Save")
 
     override fun updateView() {
+        var curNote = model.getCurrentNote()
 
-        if(curNote.note == null){
+        if(curNote == null){
             children.setAll(directoryViewPane)
         }
         else {
             // display Note text
-            val text = Text(curNote.note!!.getData().text)
+            val text = Text(curNote.getData().text)
             text.font = Font("Helvetica", 12.0)
             text.wrappingWidth = 350.0
 
             dataArea.text = text.text
 
             dataArea.onKeyPressed = EventHandler { event ->
-                if (event.code == KeyCode.SPACE) curNote.note!!.saveState()
+                if (event.code == KeyCode.SPACE) curNote!!.saveState()
             }
 
             dataArea.setOnKeyTyped {
-                model.updateData(curNote.note!!.getNoteName(), dataArea, curNote.note!!.getCarat())
+                model.updateData(curNote!!.getNoteName(), dataArea, curNote!!.getCarat())
                 dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
             }
 
             // buttons for note manipulation
             val undoButton = Button("Undo")
             undoButton.setOnMouseClicked {
-                curNote.note!!.undoState()
+                curNote!!.undoState()
                 println("undo")
             }
             val redoButton = Button("Redo")
             redoButton.setOnMouseClicked {
-                curNote.note!!.redoState()
+                curNote!!.redoState()
                 println("redo")
             }
 
             val closeButton = Button("Close")
             closeButton.setOnMouseClicked {
-                curNote.note = null
+                model.setCurrentNote(null)
                 model.notifyObservers()
             }
 
@@ -91,12 +92,6 @@ class NoteView (private val model: Model) : VBox(), IView{
             outmostPane.top = noteToolBar
             outmostPane.center = dataArea
 
-            // detect size change
-            val stageSizeListener: ChangeListener<Number> = ChangeListener<Number> { observable, oldValue, newValue ->
-                val name = curNote.note!!.getNoteName()
-                model.updateSize(name, outmostPane.getHeight(), outmostPane.getWidth())
-            }
-
             children.setAll(outmostPane)
         }
 
@@ -105,6 +100,7 @@ class NoteView (private val model: Model) : VBox(), IView{
 
     init {
         model.addView(this)
+
         //setting up the view
         this.alignment = Pos.CENTER
         this.minHeight = 100.0
@@ -113,7 +109,7 @@ class NoteView (private val model: Model) : VBox(), IView{
         directoryToolBar.items.setAll(nameTextBox, createButton) //adding to toolbar
 
         directoryViewPane.top = directoryToolBar // Adding to the outer box
-        directoryViewPane.center = ScrollPane(DirectoryView(model, curNote)).apply {
+        directoryViewPane.center = ScrollPane(DirectoryView(model)).apply {
             // only show vertical scroll bar
             hbarPolicy = ScrollPane.ScrollBarPolicy.NEVER
             vbarPolicy = ScrollPane.ScrollBarPolicy.ALWAYS
@@ -131,9 +127,11 @@ class NoteView (private val model: Model) : VBox(), IView{
         model.addView(this)
     }
 
-
-    fun getCurNote(): CurNote{
-        return curNote
-    }
-
 }
+
+// Deprecated code for figuring out size changes
+//// detect size change
+//val stageSizeListener: ChangeListener<Number> = ChangeListener<Number> { observable, oldValue, newValue ->
+//    val name = curNote!!.getNoteName()
+//    model.updateSize(name, outmostPane.getHeight(), outmostPane.getWidth())
+//}

@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox
 import kotlin.Double.Companion.POSITIVE_INFINITY
 
 
-internal class DirectoryView(private val model: Model, private var curNote: CurNote) : VBox(), IView{
+internal class DirectoryView(private val model: Model) : VBox(), IView{
     init {
         model.addView(this)
         updateView()
@@ -29,9 +29,9 @@ internal class DirectoryView(private val model: Model, private var curNote: CurN
         init {
             setOnAction {
                 // go into note view
-                curNote.note = note
+                model.setCurrentNote(note)
                 model.notifyObservers()
-                println("Edit button pressed wiht Note name: ${note.getNoteName()}")
+                println("Edit button pressed with Note name: ${note.getNoteName()}")
             }
         }
     }

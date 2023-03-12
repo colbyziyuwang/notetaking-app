@@ -120,12 +120,18 @@ class Model {
 
     //Sets the current note
     fun setCurrentNote(note: Note?){
-        currentNote = note
+        currentNote = getNote(note!!.getNoteName())
     }
 
     //Gets the current note
     fun getCurrentNote(): Note? {
         return currentNote
+    }
+
+    //returns the requisite note from the DB
+    fun getNote(name: String): Note{
+        val dao = DataBaseDAO()
+        return dao.getNote(name)
     }
 
 }

@@ -104,12 +104,14 @@ class DataBaseDAO {
     //Return note by name
     fun getNote(noteName: String): Note {
         val db = connectDB()
-        return transaction {
+        val note = transaction {
             val note = DataBase.select{DataBase.name eq noteName}.single()
-            return@transaction Note(note[DataBase.name], note[DataBase.content], note[DataBase.creationDate],
+            Note(note[DataBase.name], note[DataBase.content], note[DataBase.creationDate],
                 note[DataBase.lastModifiedDate], note[DataBase.caratPosition], note[DataBase.winWidth],
                 note[DataBase.winHeight])
         }
+        TransactionManager.closeAndUnregister(db)
+        return note
     }
 }
 

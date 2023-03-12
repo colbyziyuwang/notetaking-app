@@ -32,6 +32,12 @@ class Note(
         winHeight = height
     }
 
+    //Constructor for creating a file when a name is passed
+    constructor(name: String): this(){
+        noteName = name
+        data = TextArea("Add your text here...")
+    }
+
     // undo / redo handler
     private data class State(val data: String)
 
@@ -136,18 +142,21 @@ class Note(
     }
 
     // loads saved version of data
-    fun loadData(){
-
-
-        val file = File("NoteSave.txt")
-        var content:String = file.readText()
-        data.text = content
+    fun loadData(name: String): Note{
+        val dao = DataBaseDAO()
+        return dao.getNote(name)
     }
 
     // saves all fields of note to database
     fun save() {
         val dao = DataBaseDAO()
         dao.updateNote(this)
+    }
+
+    //Adds note to Data base
+    fun addToDB(note: Note){
+        val dao = DataBaseDAO()
+        dao.addNote(note)
     }
 
     //returns the position of the carat of the text area

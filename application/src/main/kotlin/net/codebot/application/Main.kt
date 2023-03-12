@@ -15,25 +15,6 @@ import java.sql.DriverManager
 class Main : Application() {
     override fun start(stage: Stage) {
 
-        //TODO: Replace below with a database
-
-
-        // TODO  :need to create database
-        //Database connection must be established and closed everytime
-
-
-
-        //accessing stuff from database//DEBUGGING
-        transaction {
-            val result = DataBase.select { DataBase.noteID eq 2 }.toList()
-
-            for (row in result){
-                println("Note Name: ${row[DataBase.name]}, CreationDate: ${row[DataBase.creationDate]}")
-            }
-        }
-
-
-
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
@@ -45,31 +26,17 @@ class Main : Application() {
         val model = Model()
         val currentView = CurrentView(model)
 
-        //default height and width values
+        //default height and width values, put into variables for easy changing later
         var width = 500.0
         var height = 500.0
-
-        //accessing stuff from database //DEBUGGING
-        transaction {
-            val result = DataBase.select { DataBase.noteID eq 2 }.toList()
-
-            for (row in result){
-                width = row[DataBase.winWidth]
-                height = row[DataBase.winHeight]
-            }
-        }
 
         //Applying window settings to load stored window size
         val scene = Scene(currentView.curView, width, height)
 
         //Default mode is light mode
         scene.stylesheets.add("defaultStyle.css")
-        //scene.stylesheets.add("darkMode.css")
-
         stage.scene = scene
         stage.title = "NoteTaking application"
-
-
         stage.show()
 
         //Toggling between dark mode and lightmode

@@ -67,6 +67,7 @@ class DataBaseDAO {
 
     //ADD a note to the DataBase
     fun addNote(note: Note){
+        val db = connectDB()
         transaction {
             DataBase.insert { newRow ->
                 newRow[name] = note.getNoteName()
@@ -78,18 +79,25 @@ class DataBaseDAO {
                 newRow[winHeight] = note.getWinSize()[1]
             }
         }
+        TransactionManager.closeAndUnregister(db)
     }
 
     //Delete a note from the database
     fun deleteNote(note: Note){
+        val db = connectDB()
         transaction {
             DataBase.deleteWhere { DataBase.name eq note.getNoteName()}
         }
+        TransactionManager.closeAndUnregister(db)
     }
 
     //Deletes all notes in the database
     fun deleteAllNotes(){
-        DataBase.deleteAll()
+        val db = connectDB()
+        transaction {
+            DataBase.deleteAll()
+        }
+        TransactionManager.closeAndUnregister(db)
     }
 
 
@@ -104,3 +112,15 @@ class DataBaseDAO {
         }
     }
 }
+
+//TODO: USEFUL FOR UPCOMING FUNCTIONS
+//accessing stuff from database //DEBUGGING
+//        val dao = DataBaseDAO()
+//        transaction {
+//            val result = DataBase.select { DataBase.noteID eq 2 }.toList()
+//
+//            for (row in result){
+//                width = row[DataBase.winWidth]
+//                height = row[DataBase.winHeight]
+//            }
+//        }

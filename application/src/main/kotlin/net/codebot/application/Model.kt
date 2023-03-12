@@ -28,11 +28,15 @@ class Model {
     private var currentNote: Note? = null
 
     init {
+        val dao = DataBaseDAO()
+        dao.deleteAllNotes() //emptying database
         // add some notes for debugging
-        notes.add(Note("Note 1", TextArea("This is the first note")))
-        notes.add(Note("Note 2", TextArea("This is the second note")))
-        notes.add(Note("Note 3", TextArea("This is the third note")))
-
+        createNote("Note 1")
+        addDataToDB("Note 1")
+        createNote("Note 2")
+        addDataToDB("Note 2")
+        createNote("Note 3")
+        addDataToDB("Note 3")
     }
 
     //returns the items of the model (For demo1 this is the one note)
@@ -40,8 +44,9 @@ class Model {
         return notes
     }
 
-    fun createNote(name: String){ //Redundant?
-        notes.add(Note(name))
+    fun createNote(name: String){
+        var note = Note(name)
+        notes.add(note)
         notifyObservers()
     }
 
@@ -93,10 +98,19 @@ class Model {
         }
     }
 
+    //Adds note data to DB
+    fun addDataToDB(name: String){
+        for(n in notes) {
+            if(name == n.getNoteName()){
+                n.addToDB(n)
+            }
+        }
+    }
+
     fun loadData(noteName: String){
         for(n in notes){
             if (noteName == n.getNoteName()){
-                n.loadData()
+                n.loadData(noteName)
                 notifyObservers()
                 return
             }

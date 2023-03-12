@@ -93,13 +93,6 @@ class Model {
         }
     }
 
-
-    fun createSaveFile(){
-        val fileName = "NoteSave.txt"
-        var file = File(fileName)
-        file.writeText("Add your text here...")
-    }
-
     fun loadData(noteName: String){
         for(n in notes){
             if (noteName == n.getNoteName()){

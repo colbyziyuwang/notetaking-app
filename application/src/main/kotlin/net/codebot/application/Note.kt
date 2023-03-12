@@ -1,5 +1,7 @@
 package net.codebot.application
 import javafx.scene.control.TextArea
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import java.io.File
@@ -13,11 +15,22 @@ class Note(
 ){
 
     // Properties
-    private val creationDate = getCurrentDate()
+    private var creationDate = getCurrentDate()
     private var lastModifiedDate = creationDate
     private var caratPOS = 0
     private var winWidth = 500.0
     private var winHeight = 500.0
+
+    //Constructor that corresponds to a Database retrieval
+    constructor(name: String, text: String, crDate: String, lmDate: String, carat: Int, width: Double, height: Double) : this() {
+        noteName = name
+        data = TextArea(text)
+        creationDate = crDate
+        lastModifiedDate = lmDate
+        caratPOS = carat
+        winWidth = width
+        winHeight = height
+    }
 
     // undo / redo handler
     private data class State(val data: String)
@@ -124,16 +137,17 @@ class Note(
 
     // loads saved version of data
     fun loadData(){
+
+
         val file = File("NoteSave.txt")
         var content:String = file.readText()
         data.text = content
     }
 
-    // save
+    // saves all fields of note to database
     fun save() {
-        val fileName = "NoteSave.txt"
-        var file = File(fileName)
-        file.writeText(data.text) //saving current state of text to file
+        val dao = DataBaseDAO()
+        dao.updateNote(this)
     }
 
     //returns the position of the carat of the text area

@@ -28,17 +28,18 @@ object DataBase : Table() {
 
 //Defines all the functions to interact with the DataBase modularly
 class DataBaseDAO {
-    //Connects to a pre-existing database and readies it to be manipulated
-    fun connectDB(){
-        Database.connect("jdbc:sqlite:noteData.db", "org.sqlite.JDBC")
+    //Connects to a pre-existing database and returns a reference to the database connection
+    private fun connectDB(): Database{
+        val db = Database.connect("jdbc:sqlite:noteData.db", "org.sqlite.JDBC")
         transaction {
             SchemaUtils.create(DataBase)
         }
+        return db
     }
 
     // Update all fields of a note whenever any field is modified
-    // TODO
     fun updateNote(note: Note) {
+        val db = connectDB()
         transaction {
             DataBase.update({DataBase.name eq note.getNoteName()}){ row ->
                 row[name] = note.getNoteName()
@@ -50,7 +51,9 @@ class DataBaseDAO {
                 row[winHeight] = note.getWinSize()[1]
             }
         }
+        TransactionManager.closeAndUnregister(db) // closing the connection
     }
+
 
     // return the height and width of a note in the database
     fun getWidthHeight(note: Note): Array<Double> {
@@ -91,5 +94,13 @@ class DataBaseDAO {
 
 
     //Return note by name
-    //TODO
+    fun getNote(noteName: String): Note {
+        val db = connectDB()
+        return transaction {
+            val note = DataBase.select{DataBase.name eq noteName}.single()
+            return@transaction Note(note[DataBase.name], note[DataBase.content], note[DataBase.creationDate],
+                note[DataBase.lastModifiedDate], note[DataBase.caratPosition], note[DataBase.winWidth],
+                note[DataBase.winHeight])
+        }
+    }
 }

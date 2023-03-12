@@ -19,10 +19,7 @@ class Main : Application() {
 
 
         // TODO  :need to create database
-        //Establishing Database connection
-        val dataBaseDAO = DataBaseDAO()
-        dataBaseDAO.connectDB()
-
+        //Database connection must be established and closed everytime
 
 
 

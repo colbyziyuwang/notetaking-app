@@ -82,6 +82,11 @@ class NoteView (private val model: Model) : VBox(), IView{
                 model.notifyObservers()
             }
 
+            saveButton.setOnMouseClicked {
+                model.saveData(curNote.getNoteName())
+                model.notifyObservers()
+            }
+
             //TODO: Once copy/paste is complete
             //val copyButton = Button("Copy")
             //val pasteButton = Button("Paste")

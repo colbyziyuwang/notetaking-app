@@ -2,120 +2,139 @@ package net.codebot.application
 import javafx.beans.value.ChangeListener
 import javafx.event.EventHandler
 import javafx.geometry.Pos
-import javafx.scene.control.Button
-import javafx.scene.control.TextArea
-import javafx.scene.control.ToolBar
+import javafx.scene.control.*
 import javafx.scene.input.KeyCode
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
 
+
 class NoteView (private val model: Model) : VBox(), IView{
 
-    //Starting off buttons in unknown state as advised by example MVC
+    private var currentNote: Note? = null
 
-    //Jerry: Make this more abstract with a dynamic array of buttons,
-    //       when context change happens push new buttons onto array
-    //       (generalize adding buttons to pushing in array)
-    private val createButton = Button("?")
+    private val createButton = Button("?").apply {
+        text = "Create" //Text
+        font = Font("Helvetica", 11.0) //Fonts
+
+        //Button Actions
+        setOnMouseClicked {
+            ////TODO: Check for duplicate named note and throw appropriate errors
+
+
+            if(nameTextBox.text.isEmpty()){
+                model.createNote("New Note") //TODO
+            }
+            else{
+                model.createNote(nameTextBox.text)
+            }
+        }
+    }
+
     private val editButton = Button("?")
     private val deleteButton = Button("?")
     private val loadButton = Button("?")
 
     private val toolBar = ToolBar() //Toolbar
+    private val directoryToolBar = ToolBar() //Toolbar
 
     val outmostPane = BorderPane() //outermost container of view
+    val directoryViewPane = BorderPane()
 
+    val nameTextBox = TextField()
     val dataArea = TextArea() // holds the visual aspects of the data
-    val dataContainer = VBox()
+    //val dataContainer = VBox()
 
 
     val saveButton = Button("Save")
 
     override fun updateView() {
-        // get the items
-        val note = model.getItems()
+        var curNote = model.getCurrentNote()
 
-        // display Note text
-        val text = Text(note.getData().text)
-        text.font = Font("Helvetica", 12.0)
-        text.wrappingWidth = 350.0
-
-        dataArea.text = text.text
-
-        dataArea.onKeyPressed = EventHandler { event ->
-            if (event.code == KeyCode.SPACE) model.getItems().saveState()
+        if(curNote == null){
+            children.setAll(directoryViewPane)
         }
+        else {
+            // display Note text
+            val text = Text(curNote.getData().text)
+            text.font = Font("Helvetica", 12.0)
+            text.wrappingWidth = 350.0
 
-        // buttons for note manipulation
-        val undoButton = Button("Undo")
-        undoButton.setOnMouseClicked {
-            model.getItems().undoState()
-            println("undo")
-        }
-        val redoButton = Button("Redo")
-        redoButton.setOnMouseClicked {
-            model.getItems().redoState()
-            println("redo")
-        }
+            dataArea.text = text.text
+            val temp = curNote.getCarat() //debugging
+            dataArea.positionCaret(temp)
+            println("Positioned caret at ${temp}") //debugging
+            dataArea.onKeyPressed = EventHandler { event ->
+                if (event.code == KeyCode.SPACE) curNote!!.saveState()
+            }
+
+            dataArea.setOnKeyTyped {
+                model.updateData(curNote!!.getNoteName(), dataArea, curNote!!.getCarat())
+                dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
+            }
+
+            // buttons for note manipulation
+            val undoButton = Button("Undo")
+            undoButton.setOnMouseClicked {
+                curNote!!.undoState()
+                println("undo")
+            }
+            val redoButton = Button("Redo")
+            redoButton.setOnMouseClicked {
+                curNote!!.redoState()
+                println("redo")
+            }
+
+            val closeButton = Button("Close")
+            closeButton.setOnMouseClicked {
+                model.removeCurrentNote()
+                model.updateNotes()
+            }
 
 
+            saveButton.setOnMouseClicked {
+                println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                model.saveData(curNote.getNoteName())
+            }
 
-
-        //TODO: Once copy/paste is complete
-        //val copyButton = Button("Copy")
-        //val pasteButton = Button("Paste")
+            //TODO: Once copy/paste is complete
+            //val copyButton = Button("Copy")
+            //val pasteButton = Button("Paste")
 
         val noteToolBar = ToolBar() //Toolbar
-        noteToolBar.items.addAll(undoButton, redoButton, saveButton)//, copyButton, pasteButton)
+        noteToolBar.items.addAll(undoButton, redoButton, saveButton, closeButton)//, copyButton, pasteButton)
 
-        outmostPane.top = noteToolBar
-        outmostPane.center = dataArea
+            outmostPane.top = noteToolBar
+            outmostPane.center = dataArea
+
+            children.setAll(outmostPane)
+        }
 
     }
 
 
     init {
+        model.addView(this)
+
         //setting up the view
         this.alignment = Pos.CENTER
         this.minHeight = 100.0
 
-        //init button actions
-        createButton.text = "Create" //Text
-        editButton.text = "Edit"
-        deleteButton.text = "Delete"
-        loadButton.text = "Load"
 
-        createButton.font = Font("Helvetica", 11.0) //Fonts
-        editButton.font = Font("Helvetica", 11.0)
-        deleteButton.font = Font("Helvetica", 11.0)
-        loadButton.font = Font("Helvetica", 11.0)
+        directoryToolBar.items.setAll(nameTextBox, createButton) //adding to toolbar
 
-        toolBar.items.addAll(createButton, editButton, deleteButton, loadButton) //adding to toolbar
-
-        outmostPane.center = toolBar // Adding to the outer box
-
-
-        //View Controller*************************************************************************************
-        createButton.setOnMouseClicked {
-            model.createNote()
-            model.createSaveFile()
+        directoryViewPane.top = directoryToolBar // Adding to the outer box
+        directoryViewPane.center = ScrollPane(DirectoryView(model)).apply {
+            // only show vertical scroll bar
+            hbarPolicy = ScrollPane.ScrollBarPolicy.NEVER
+            vbarPolicy = ScrollPane.ScrollBarPolicy.ALWAYS
+            // pref height
+            isFitToHeight = true
+            isFitToWidth = true
         }
 
-        loadButton.setOnMouseClicked {
-            model.createNote()
-            model.loadData()
-        }
-
-        saveButton.setOnMouseClicked {
-            model.saveData()
-        }
-
-        dataArea.setOnKeyTyped {
-            model.updateData(dataArea, dataArea.caretPosition)
-            dataArea.positionCaret(model.getCaratPOS()) //fixing cursor postion
-        }
+        children.setAll(directoryViewPane)
 
 
         //TODO : Implement Edit and Delete note actions
@@ -125,3 +144,10 @@ class NoteView (private val model: Model) : VBox(), IView{
     }
 
 }
+
+// Deprecated code for figuring out size changes
+//// detect size change
+//val stageSizeListener: ChangeListener<Number> = ChangeListener<Number> { observable, oldValue, newValue ->
+//    val name = curNote!!.getNoteName()
+//    model.updateSize(name, outmostPane.getHeight(), outmostPane.getWidth())
+//}

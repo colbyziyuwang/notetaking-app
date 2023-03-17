@@ -18,85 +18,139 @@ class Model {
     }
 
     // Notify all views that data has been changed
-    private fun notifyObservers(){
-
+    fun notifyObservers(){
        for (view in views){
            view.updateView()
        }
     }
 
+    private var notes = ArrayList<Note>()
+    private var currentNote: Note? = null
 
-    private var note = Notes()//For now Model will have one field that is the note
+    init {
+        val dao = DataBaseDAO()
+        dao.deleteAllNotes() //emptying database
+        // add some notes for debugging
+        createNote("Note 1")
+        createNote("Note 2")
+        createNote("Note 3")
+    }
 
     //returns the items of the model (For demo1 this is the one note)
-    fun getItems():Notes {
-        return note
+    fun getItems(): ArrayList<Note> {
+        return notes
     }
 
-    fun createNote(){ //Redundant?
-        note = Notes()
-        // insert into database
-        transaction {
-            LocalSettings.insert {
-                it[noteName] = "New Note"
-                it[width] = 500.0
-                it[height] = 350.0
+    fun createNote(name: String){
+        var note = Note(name)
+        notes.add(note)
+        notifyObservers()
+        addDataToDB(name)
+    }
+
+    fun updateData(note: String, data: TextArea,  caratPOS: Int){
+        // updates the data of the note for now
+        for (n in notes){
+            if (n.getNoteName() == note){
+                n.updateData(data, caratPOS)
+                notifyObservers()
+                return //Debugging may need to be replaced
             }
         }
         notifyObservers()
     }
 
-    fun updateData(data: TextArea, caratPOS: Int){
-        note.updateData(data, caratPOS)
-        notifyObservers()
-    }
-
-    // update the size of the document in the database
-    fun updateSize(noteNa: String, wid: Double, hei: Double) {
-        transaction {
-            LocalSettings.update({LocalSettings.noteName eq noteNa}) {
-                it[width] = wid
-                it[height] = hei
+    // delete note by name
+    fun deleteNoteByName(name: String){
+        val dao = DataBaseDAO()
+        for (note in notes){
+            if (note.getNoteName() == name){
+                dao.deleteNote(note)
+                notes.remove(note)
+                notifyObservers()
+                return
             }
         }
     }
 
-    // find the size of a note in the database
-    fun getSize(noteNa: String): ArrayList<Double> {
-        val result = ArrayList<Double>(2)
-        var width: Double = 0.0
-        var height: Double = 0.0
-        transaction {
-            val select = LocalSettings.select{LocalSettings.noteName eq noteNa}
-            val re = select.first()
-            width = re.get<Double>(LocalSettings.width)
-            height = re.get<Double>(LocalSettings.height)
-        }
-        result[0] = width
-        result[1] = height
-        return result
-    }
+
     //returns the position of the carat
-    fun getCaratPOS(): Int {
-        return note.getCarat()
+    fun getCaratPOS(noteName: String): Int {
+        var caratPOS = 0
+        for(n in notes) {
+            if (noteName == n.getNoteName()) {
+                caratPOS = n.getCarat()
+            }
+        }
+
+        return caratPOS
     }
 
 
 
     //will invoke the save function of the note
-    fun saveData(){
-        note.save()
+    fun saveData(noteName: String){
+        for(n in notes){
+            if (noteName == n.getNoteName()){
+                n.save()
+                return
+            }
+        }
+        notifyObservers()
     }
 
-
-    fun createSaveFile(){
-        val fileName = "NoteSave.txt"
-        var file = File(fileName)
-        file.writeText("Add your text here...")
+    //Adds note data to DB
+    fun addDataToDB(name: String){
+        for(n in notes) {
+            if(name == n.getNoteName()){
+                n.addToDB(n)
+            }
+        }
     }
 
-    fun loadData(){
-        note.loadData()
+    fun loadData(noteName: String){
+        for(n in notes){
+            if (noteName == n.getNoteName()){
+                n.loadData(noteName)
+                notifyObservers()
+                return
+            }
+        }
+
+    }
+
+    //Sets the current note from our list of notes
+    fun setCurrentNote(note: Note?){
+        for (n in notes){
+            if(n.getNoteName() == note!!.getNoteName()){
+                currentNote = n
+            }
+        }
+        notifyObservers()
+
+    }
+
+    fun removeCurrentNote(){
+        currentNote = null
+    }
+
+    //Gets the current note
+    fun getCurrentNote(): Note? {
+        return currentNote
+    }
+
+    //returns the requisite note from the DB
+    fun getNoteDB(name: String): Note{
+        val dao = DataBaseDAO()
+        return dao.getNote(name)
+    }
+
+    //updates all notes in our list of notes to their Database versions
+    fun updateNotes(){
+        val dao = DataBaseDAO()
+        for(i in notes.indices){
+            notes[i] = dao.getNote(notes[i].getNoteName()) // updates each note to its database version
+        }
         notifyObservers()
     }
 

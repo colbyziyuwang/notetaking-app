@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/multi-project.iml" filepath="$PROJECT_DIR$/.idea/modules/multi-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/application/multi-project.application.iml" filepath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" filepath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" filepath="$PROJECT_DIR$/.idea/modules/application/multi-project.application.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/console/multi-project.console.iml" filepath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" filepath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" filepath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" />

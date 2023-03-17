@@ -1,5 +1,7 @@
 package net.codebot.application
 import javafx.scene.control.TextArea
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import java.io.File
@@ -7,16 +9,34 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-class Notes{
+class Note(
+    private var noteName: String = "New Note",
+    private var data: TextArea = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
+){
 
     // Properties
-    private var noteName = "New Note"
-    private val creationDate = getCurrentDate()  // Corresponds to the date the Note was created, never changed post init
-    private var lastModifiedDate = creationDate // Corresponds to the date the note was last modified
-    private var data = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
+    private var creationDate = getCurrentDate()
+    private var lastModifiedDate = creationDate
+    private var caratPOS = 0
+    private var winWidth = 500.0
+    private var winHeight = 500.0
 
-    private var caratPOS = 0 // The current position of the carat
+    //Constructor that corresponds to a Database retrieval
+    constructor(name: String, text: String, crDate: String, lmDate: String, carat: Int, width: Double, height: Double) : this() {
+        noteName = name
+        data = TextArea(text)
+        creationDate = crDate
+        lastModifiedDate = lmDate
+        caratPOS = carat
+        winWidth = width
+        winHeight = height
+    }
 
+    //Constructor for creating a file when a name is passed
+    constructor(name: String): this(){
+        noteName = name
+        data = TextArea("Add your text here...")
+    }
 
     // undo / redo handler
     private data class State(val data: String)
@@ -101,14 +121,8 @@ class Notes{
     fun updateNoteName(noteNa: String) {
         val oldName = this.noteName
         this.noteName = noteNa
-        // update database
-        transaction {
-            LocalSettings.update({LocalSettings.noteName eq oldName}) {
-                it[noteName] = noteNa
-            }
-        }
+        // update database HERE
     }
-
 
     // Deletes the current note (likely we do not need this function)
     // idea: implement delete inside the folder class
@@ -128,21 +142,30 @@ class Notes{
     }
 
     // loads saved version of data
-    fun loadData(){
-        val file = File("NoteSave.txt")
-        var content:String = file.readText()
-        data.text = content
+    fun loadData(name: String): Note{
+        val dao = DataBaseDAO()
+        return dao.getNote(name)
     }
 
-    // save
+    // saves all fields of note to database
     fun save() {
-        val fileName = "NoteSave.txt"
-        var file = File(fileName)
-        file.writeText(data.text) //saving current state of text to file
+        val dao = DataBaseDAO()
+        dao.updateNote(this)
+        println("${this.getNoteName()} updated in the database")
+    }
+
+    //Adds note to Data base
+    fun addToDB(note: Note){
+        val dao = DataBaseDAO()
+        dao.addNote(note)
     }
 
     //returns the position of the carat of the text area
     fun getCarat(): Int{
         return caratPOS
+    }
+
+    fun getWinSize(): Array<Double>{
+        return arrayOf(this.winWidth, this.winHeight)
     }
 }

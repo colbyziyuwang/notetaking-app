@@ -6,6 +6,7 @@ plugins {
     id("org.openjfx.javafxplugin") version "0.0.13"
     id("org.beryx.jlink") version "2.25.0"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.6.10"
+    id("org.beryx.jlink") version "2.26.0"
 }
 
 group = "net.codebot"
@@ -14,6 +15,13 @@ version = "1.0.0"
 val compileKotlin: KotlinCompile by tasks
 val compileJava: JavaCompile by tasks
 compileJava.destinationDirectory.set(compileKotlin.destinationDirectory)
+
+jlink {
+    forceMerge(“kotlin") // eliminates bug related to java+kotlin
+    launcher {
+        name = “Note Taking” // application name
+    }
+}
 
 repositories {
     mavenCentral()

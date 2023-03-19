@@ -5,5 +5,7 @@ module application {
     requires shared;
     requires java.sql;
     requires exposed.core;
+    requires kernel;
+    requires layout;
     exports net.codebot.application;
 }

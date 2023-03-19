@@ -34,12 +34,25 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.72/6375e521c1e11d6563d4f25a07ce124ccf8cd171/jcommander-1.72.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.inject/guice/4.1.0/faf9ee8ac09eafd1128091426dd367a8c0085d55/guice-4.1.0-no_aop.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.21/18775fdda48574784f40b47bf478ab0593f92e4d/snakeyaml-1.21.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/barcodes/7.1.16/f9288f55ff98e6e07c341e0c8589ce5397045103/barcodes-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/font-asian/7.1.16/e6dc2d68b87589b4019d24538e9f68ea45c18cb9/font-asian-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/sign/7.1.16/804663d45e7d0446c423f4699cae4f9dca870843/sign-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/forms/7.1.16/928cd8cd52c979d37cf3b9d86bc1f730859f84b8/forms-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/hyph/7.1.16/6ebcea2e328194508aa47fb54ed6803790f29147/hyph-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/svg/7.1.16/3d3fe78646115e408fcda4125e777a99bd513201/svg-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/styled-xml-parser/7.1.16/d0e2cf8b72e1008f5ef9756b089b0370e9d8f37/styled-xml-parser-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/layout/7.1.16/2fc2d86df82e1760aab158117ef1bdfc51004a4e/layout-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/pdfa/7.1.16/f639a0d0e36ff64cfae61ea83dd4649d4d44cd9f/pdfa-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/kernel/7.1.16/a8dd2f750ffd4bc7f535a58f87cbc49b8983201e/kernel-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.itextpdf/io/7.1.16/edadbf567958dd05dc3cafd7ca25a50b9e88d2ad/io-7.1.16.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.30/b5a4b6d16ab13e34a88fae84c35cd5d68cac922c/slf4j-api-1.7.30.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.7.20/e15351bdaf9fa06f009be5da7a202e4184f00ae3/kotlin-stdlib-common-1.7.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9/guava-19.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.68/81da950604ff0b2652348cbd2b48fde46ced9867/bcpkix-jdk15on-1.68.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk15on/1.68/46a080368d38b428d237a59458f9bc915222894d/bcprov-jdk15on-1.68.jar</arg>
               </args>
             </stringArg>
             <stringArg name="destination" arg="$MODULE_DIR$/../../../application/build/classes/kotlin/main" />
@@ -95,18 +108,31 @@
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:win:18.0.2" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.7.20" level="project" />
-    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: com.beust:jcommander:1.72" level="project" />
     <orderEntry type="library" name="Gradle: com.google.inject:guice:no_aop:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.21" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:barcodes:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:font-asian:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:sign:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:forms:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:hyph:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:svg:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:styled-xml-parser:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:layout:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:pdfa:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:kernel:7.1.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.itextpdf:io:7.1.16" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.bouncycastle:bcpkix-jdk15on:1.68" level="project" />
+    <orderEntry type="library" name="Gradle: org.bouncycastle:bcprov-jdk15on:1.68" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.2" level="project" />
   </component>
 </module>

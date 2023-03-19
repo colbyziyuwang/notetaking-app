@@ -16,9 +16,9 @@ val compileJava: JavaCompile by tasks
 compileJava.destinationDirectory.set(compileKotlin.destinationDirectory)
 
 jlink {
-    forceMerge(“kotlin") // eliminates bug related to java+kotlin
+    forceMerge("kotlin") // eliminates bug related to java+kotlin
     launcher {
-        name = “Note Taking” // application name
+        name = "Note Taking" // application name
     }
 }
 

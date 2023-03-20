@@ -111,7 +111,7 @@ class NoteView (private val model: Model) : VBox(), IView{
                 println("Exported to PDF")
                 val note = model.getCurrentNote()
                 val name = note?.getNoteName()
-                val contents = note?.getData().toString()
+                val contents = note?.getContent().toString()
 
                 if (name != null && contents.isNotEmpty()) {
                     val desktopPath = System.getProperty("user.home") + "/Desktop/"

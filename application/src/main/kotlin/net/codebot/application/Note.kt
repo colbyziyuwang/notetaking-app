@@ -83,6 +83,10 @@ class Note(
         return this.data
     }
 
+    // returns note content in a string
+    fun getContent(): String {
+        return this.data.getText()
+    }
     // Returns the lastModifiedDate
     fun getLastModifiedDate(): String {
         return lastModifiedDate

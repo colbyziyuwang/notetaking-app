@@ -8,7 +8,14 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
-
+import com.itextpdf.kernel.pdf.PdfDocument
+import com.itextpdf.kernel.pdf.PdfWriter
+import com.itextpdf.layout.Document
+import com.itextpdf.layout.element.Paragraph
+import javafx.scene.control.Button
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 
 class NoteView (private val model: Model) : VBox(), IView{
 
@@ -98,12 +105,42 @@ class NoteView (private val model: Model) : VBox(), IView{
                 model.saveData(curNote.getNoteName())
             }
 
+            // export to pdf button
+            val pdfButton = Button("Export to PDF")
+            pdfButton.setOnMouseClicked {
+                println("Exported to PDF")
+                val note = model.getCurrentNote()
+                val name = note?.getNoteName()
+                val contents = note?.getContent().toString()
+
+                if (name != null && contents.isNotEmpty()) {
+                    val desktopPath = System.getProperty("user.home") + "/Desktop/"
+                    val pdfFilePath = desktopPath + name + ".pdf"
+
+                    try {
+                        Files.createDirectories(Paths.get(desktopPath))
+                        val pdfWriter = PdfWriter(pdfFilePath)
+                        val pdfDocument = PdfDocument(pdfWriter)
+                        val document = Document(pdfDocument)
+
+                        document.add(Paragraph(contents))
+                        document.close()
+
+                        println("PDF saved to: $pdfFilePath")
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        println("Error exporting PDF: ${e.message}")
+                    }
+                }
+            }
+
             //TODO: Once copy/paste is complete
             //val copyButton = Button("Copy")
             //val pasteButton = Button("Paste")
 
         val noteToolBar = ToolBar() //Toolbar
-        noteToolBar.items.addAll(undoButton, redoButton, saveButton, closeButton)//, copyButton, pasteButton)
+        noteToolBar.items.addAll(undoButton, redoButton, saveButton, closeButton,
+            pdfButton)//, copyButton, pasteButton)
 
             outmostPane.top = noteToolBar
             outmostPane.center = dataArea

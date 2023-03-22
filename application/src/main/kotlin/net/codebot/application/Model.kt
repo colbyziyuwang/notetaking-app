@@ -64,7 +64,7 @@ class Model {
         var note = Note(new_name)
         notes.add(note)
         notifyObservers()
-        addDataToDB(name)
+        addDataToDB(new_name)
     }
 
     fun updateData(note: String, data: TextArea,  caratPOS: Int){

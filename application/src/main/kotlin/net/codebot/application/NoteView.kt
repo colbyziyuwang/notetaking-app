@@ -52,6 +52,7 @@ class NoteView (private val model: Model) : VBox(), IView{
     val saveButton = Button("")
 
     override fun updateView() {
+        // this wouldn't run outside the function under the declaration for some reason
         val saveIcon = Image("save-icon.png")
         saveButton.graphic = ImageView(saveIcon)
 

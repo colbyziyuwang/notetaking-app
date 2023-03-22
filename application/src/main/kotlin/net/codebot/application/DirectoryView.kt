@@ -4,6 +4,8 @@ import javafx.geometry.Orientation
 import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.Separator
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Priority
 import javafx.scene.layout.VBox
@@ -16,11 +18,15 @@ internal class DirectoryView(private val model: Model) : VBox(), IView{
         updateView()
     }
 
-    inner class deleteButton(noteName: String): Button("Delete") {
+    inner class deleteButton(noteName: String): Button("") {
         init {
             setOnAction {
                 model.deleteNoteByName(noteName)
             }
+
+            // icon
+            val deleteIcon = Image("delete-icon.png")
+            this.graphic = ImageView(deleteIcon)
         }
     }
 
@@ -60,6 +66,7 @@ internal class DirectoryView(private val model: Model) : VBox(), IView{
                     HBox.setMargin(it, javafx.geometry.Insets(0.0, 10.0, 0.0, 0.0))
                     alignment = javafx.geometry.Pos.CENTER_LEFT
                 }
+                this.id = "noteBox" // for CSS styling
             })
 
         }

@@ -49,9 +49,12 @@ class NoteView (private val model: Model) : VBox(), IView{
     val dataArea = TextArea() // holds the visual aspects of the data
     //val dataContainer = VBox()
 
-    val saveButton = Button("Save")
+    val saveButton = Button("")
 
     override fun updateView() {
+        val saveIcon = Image("save-icon.png")
+        saveButton.graphic = ImageView(saveIcon)
+
         var curNote = model.getCurrentNote()
 
         if(curNote == null){
@@ -86,9 +89,9 @@ class NoteView (private val model: Model) : VBox(), IView{
 
             // adding icons
             val undoIcon = Image("undo-icon.png")
-            undoButton.setGraphic(ImageView(undoIcon))
+            undoButton.graphic = ImageView(undoIcon)
             val redoIcon = Image("redo-icon.png")
-            redoButton.setGraphic(ImageView(redoIcon))
+            redoButton.graphic = ImageView(redoIcon)
 
             // key combinations for keyboard shortcuts
             val undoComb = KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN)

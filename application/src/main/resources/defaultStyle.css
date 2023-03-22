@@ -93,4 +93,20 @@ ScrollBar .thumb {
 
 ScrollBar .increment-arrow,  .decrement-arrow{
     -fx-background-color: #177578;
+    -fx-effect: none;
+}
+
+ScrollBar .increment-arrow:hover, .decrement-arrow:hover {
+    -fx-background-color: #4BC6B9;
+}
+
+TextField {
+    -fx-background-color: #F8FCFA;
+    -fx-padding: 7 10;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+TextField:focus {
+    -fx-effect: none;
 }

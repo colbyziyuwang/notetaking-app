@@ -54,7 +54,6 @@ Label {
 #noteBox {
     -fx-padding: 10 20;
     -fx-background-color: #081327;
-    /*0C1A31*/
 
     -fx-border-radius: 10;
     -fx-background-radius: 10;
@@ -85,8 +84,17 @@ ScrollBar .thumb {
 
 ScrollBar .increment-arrow,  .decrement-arrow{
     -fx-background-color: #274C91;
+    -fx-effect: none;
+}
+
+ScrollBar .increment-arrow:hover, .decrement-arrow:hover {
+    -fx-background-color: #5075B9;
 }
 
 TextField {
     -fx-background-color: #081327;
+    -fx-text-fill: #F6F0ED;
+    -fx-padding: 7 10;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }

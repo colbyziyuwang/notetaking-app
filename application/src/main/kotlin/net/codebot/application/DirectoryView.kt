@@ -54,7 +54,7 @@ internal class DirectoryView(private val model: Model) : VBox(), IView{
                 Label(notes[i].getNoteName()).apply {
                     HBox.setHgrow(this, Priority.ALWAYS)
                     maxWidth = POSITIVE_INFINITY
-                    this.id = "noteBoxTitle" },
+                    this.id = "noteBoxTitle" /*for CSS styling*/ },
                 Label(notes[i].getCreationDate()),
                 Label(notes[i].getLastModifiedDate()),
                 editButton(notes[i]),

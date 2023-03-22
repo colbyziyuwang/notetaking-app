@@ -94,10 +94,6 @@ class NoteView (private val model: Model) : VBox(), IView{
             val redoIcon = Image("redo-icon.png")
             redoButton.graphic = ImageView(redoIcon)
 
-            // key combinations for keyboard shortcuts
-            val undoComb = KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN)
-            val redoComb = KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN)
-
             undoButton.setOnMouseClicked {
                 curNote!!.undoState()
                 println("undo") // for debugging
@@ -119,7 +115,12 @@ class NoteView (private val model: Model) : VBox(), IView{
                 model.saveData(curNote.getNoteName())
             }
 
+            // key combinations for keyboard shortcuts
+            val undoComb = KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN)
+            val redoComb = KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN)
             val saveComb = KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN)
+
+            // event handler for shortcuts
             dataArea.onKeyPressed = EventHandler { event ->
                 if (undoComb.match(event)) {
                     curNote!!.undoState()

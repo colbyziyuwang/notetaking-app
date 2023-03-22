@@ -42,7 +42,26 @@ class Model {
     }
 
     fun createNote(name: String){
-        var note = Note(name)
+        var new_name = name
+        // check for duplicates
+        var dup = false
+        var tally = 0
+        for (item in notes) {
+            var na = item.getNoteName()
+            val pos = na.lastIndexOf(' ')
+            na = na.substring(0, pos)
+            if (na == name) {
+                dup = true
+                tally = tally + 1
+            }
+        }
+
+        if (!dup) {
+            new_name = new_name + " (0)"
+        } else {
+            new_name = new_name + " (" + tally + ")"
+        }
+        var note = Note(new_name)
         notes.add(note)
         notifyObservers()
         addDataToDB(name)

@@ -1,16 +1,11 @@
 package net.codebot.application
 import javafx.application.Application
-import javafx.beans.value.ChangeListener
 import javafx.event.EventHandler
 import javafx.scene.Scene
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCodeCombination
 import javafx.scene.input.KeyCombination
 import javafx.stage.Stage
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.transaction
-import java.io.File
-import java.sql.DriverManager
 
 class Main : Application() {
     override fun start(stage: Stage) {
@@ -33,13 +28,13 @@ class Main : Application() {
         //Applying window settings to load stored window size
         val scene = Scene(currentView.curView, width, height)
 
-        //Default mode is light mode
+        // Default mode is light mode
         scene.stylesheets.add("defaultStyle.css")
         stage.scene = scene
         stage.title = "NoteTaking application"
         stage.show()
 
-        //Toggling between dark mode and lightmode
+        // Toggling between dark mode and light mode
         scene.onKeyPressed = EventHandler { event ->
             if(darkComb.match(event)) {
                 scene.stylesheets.clear()

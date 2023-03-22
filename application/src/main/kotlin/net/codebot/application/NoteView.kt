@@ -108,16 +108,6 @@ class NoteView (private val model: Model) : VBox(), IView{
                 println("redo") // for debugging
             }
 
-            dataArea.onKeyPressed = EventHandler { event ->
-                if (undoComb.match(event)) {
-                    curNote!!.undoState()
-                    println("undo key comb") // debugging
-                } else if (redoComb.match(event)) {
-                    curNote!!.redoState()
-                    println("redo key comb") // debugging
-                }
-            }
-
             val closeButton = Button("Close")
             closeButton.setOnMouseClicked {
                 model.removeCurrentNote()
@@ -128,6 +118,21 @@ class NoteView (private val model: Model) : VBox(), IView{
                 println("Caret position is ${curNote.getData().caretPosition}") //debugging
                 model.saveData(curNote.getNoteName())
             }
+
+            val saveComb = KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN)
+            dataArea.onKeyPressed = EventHandler { event ->
+                if (undoComb.match(event)) {
+                    curNote!!.undoState()
+                    println("undo key comb") // debugging
+                } else if (redoComb.match(event)) {
+                    curNote!!.redoState()
+                    println("redo key comb") // debugging
+                } else if (saveComb.match(event)) {
+                    println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                    model.saveData(curNote.getNoteName())
+                }
+            }
+
 
             //TODO: Once copy/paste is complete
             //val copyButton = Button("Copy")

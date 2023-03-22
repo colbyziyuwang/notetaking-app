@@ -17,8 +17,8 @@ TextArea {
 TextArea .content {
      -fx-font-family: "Raleway", sans-serif;
      -fx-font-size: 14px;
-     -fx-background-color: #0C1A31;
-     -fx-box-shadow: none;
+     -fx-background-color: #081327;
+     -fx-border-shadow: none;
      -fx-padding: 10 10;
 }
 
@@ -34,7 +34,7 @@ ToolBar {
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-padding: 7 20;
-    -fx-font-family: 'Raleway', sans-serif;
+    -fx-font-family: "Raleway", sans-serif;
     -fx-font-size: 14px;
 }
 
@@ -53,10 +53,15 @@ Label {
 
 #noteBox {
     -fx-padding: 10 20;
-    -fx-background-color: #0C1A31;
+    -fx-background-color: #081327;
+    /*0C1A31*/
 
     -fx-border-radius: 10;
     -fx-background-radius: 10;
+}
+
+#noteBox:hover {
+    -fx-background-color: #0C1A31;
 }
 
 Separator .line {
@@ -80,4 +85,8 @@ ScrollBar .thumb {
 
 ScrollBar .increment-arrow,  .decrement-arrow{
     -fx-background-color: #274C91;
+}
+
+TextField {
+    -fx-background-color: #081327;
 }

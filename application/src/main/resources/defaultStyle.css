@@ -7,6 +7,7 @@ TextArea {
     -fx-box-shadow: none;
     -fx-font-family: "Raleway", sans-serif;
     -fx-font-size: 14px;
+    -fx-display-caret:true;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
     -fx-background-color: #E2F4ED;
@@ -16,7 +17,9 @@ TextArea {
 TextArea .content {
      -fx-font-family: "Raleway", sans-serif;
      -fx-font-size: 14px;
+     -fx-background-color: #F8FCFA;
      -fx-padding: 10 10;
+     -fx-border-shadow: none;
 }
 
 ToolBar {
@@ -63,6 +66,10 @@ ToolBar {
 #noteBox:hover {
     -fx-background-color: #FFFFFF;
     /* -fx-border-color: #FFFFFF; */
+}
+
+#noteBoxTitle {
+    -fx-font-weight: extra-bold;
 }
 
 Separator .line {

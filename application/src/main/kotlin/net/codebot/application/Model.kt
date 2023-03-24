@@ -1,5 +1,8 @@
 package net.codebot.application
 import javafx.scene.control.TextArea
+import kotlinx.serialization.json.Json
+import net.codebot.console.DBNote
+import net.codebot.console.webService
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -28,12 +31,14 @@ class Model {
     private var currentNote: Note? = null
 
     init {
-        val dao = DataBaseDAO()
-        dao.deleteAllNotes() //emptying database
+        val web = webService()
+        web.deleteAll() //Clearing previous notes FOR debugging
+
         // add some notes for debugging
         createNote("Note 1")
         createNote("Note 2")
         createNote("Note 3")
+
     }
 
     //returns the items of the model (For demo1 this is the one note)
@@ -63,8 +68,9 @@ class Model {
         }
         var note = Note(new_name)
         notes.add(note)
+        addDataToDB(note)
         notifyObservers()
-        addDataToDB(new_name)
+
     }
 
     fun updateData(note: String, data: TextArea,  caratPOS: Int){
@@ -79,17 +85,30 @@ class Model {
         notifyObservers()
     }
 
+    // COMMETNED OUT FOR WEB SERVICE CODE BURGER KING
     // delete note by name
     fun deleteNoteByName(name: String){
-        val dao = DataBaseDAO()
+        //val dao = DataBaseDAO()
         for (note in notes){
             if (note.getNoteName() == name){
-                dao.deleteNote(note)
+                //dao.deleteNote(note)
                 notes.remove(note)
+                syncWebToLocal()
                 notifyObservers()
                 return
             }
         }
+    }
+
+    //WEB SERVICE CODE BURGER KING
+    fun syncWebToLocal(){
+
+        val web = webService()
+        web.deleteAll()
+        for (note in notes){
+            web.post(note.noteToDBNote())
+        }
+
     }
 
 
@@ -108,23 +127,29 @@ class Model {
 
 
     //will invoke the save function of the note
+    //CODE BURGER KING WEB SERVICE
     fun saveData(noteName: String){
-        for(n in notes){
-            if (noteName == n.getNoteName()){
-                n.save()
-                return
-            }
-        }
+//        for(n in notes){
+//            if (noteName == n.getNoteName()){
+//                n.save()
+//                return
+//            }
+//        }
+        syncWebToLocal()
         notifyObservers()
     }
 
+    //CODE BURGER KING WEB SERVICE
     //Adds note data to DB
-    fun addDataToDB(name: String){
-        for(n in notes) {
-            if(name == n.getNoteName()){
-                n.addToDB(n)
-            }
-        }
+    fun addDataToDB(note: Note){
+//        for(n in notes) {
+//            if(name == n.getNoteName()){
+//                n.addToDB(n)
+//            }
+//        }
+        val web = webService()
+        web.post(note.noteToDBNote())
+
     }
 
     fun loadData(noteName: String){
@@ -164,12 +189,21 @@ class Model {
         return dao.getNote(name)
     }
 
+    //CODE BURGER KING
     //updates all notes in our list of notes to their Database versions
     fun updateNotes(){
-        val dao = DataBaseDAO()
-        for(i in notes.indices){
-            notes[i] = dao.getNote(notes[i].getNoteName()) // updates each note to its database version
-        }
+//        val dao = DataBaseDAO()
+//        for(i in notes.indices){
+//            notes[i] = dao.getNote(notes[i].getNoteName()) // updates each note to its database version
+//        }
+        val web = webService()
+        notes.clear()
+        println("Before get request")
+        val dbnotes = web.get()
+//        for(note in dbnotes){
+//            notes.add(Note(note))
+//            println("added "+ note.name + " from server to local")
+//        }
         notifyObservers()
     }
 

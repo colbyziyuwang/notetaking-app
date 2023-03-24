@@ -1,5 +1,8 @@
 package net.codebot.application
 import javafx.scene.control.TextArea
+
+import net.codebot.console.DBNote
+import net.codebot.console.webService
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -7,6 +10,7 @@ import org.jetbrains.exposed.sql.update
 import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+
 
 
 class Note(
@@ -38,6 +42,12 @@ class Note(
         data = TextArea("Add your text here...")
     }
 
+    constructor(note: DBNote) : this() {
+        noteName = note.name
+        data = TextArea(note.data)
+        creationDate = note.cDate
+        lastModifiedDate = note.lmDate
+    }
     // undo / redo handler
     private data class State(val data: String)
 
@@ -151,17 +161,18 @@ class Note(
         return dao.getNote(name)
     }
 
-    // saves all fields of note to database
+    // saves all fields of note to database WEBSERVICE UPDATE: COMMENTED OUT DB STUFF burger king letsgo
     fun save() {
-        val dao = DataBaseDAO()
-        dao.updateNote(this)
-        println("${this.getNoteName()} updated in the database")
+//        val dao = DataBaseDAO()
+//        dao.updateNote(this)
+//        println("${this.getNoteName()} updated in the database")
     }
 
-    //Adds note to Data base
+    //Adds note to Data base WEBSERVICE UPDATE: COMMENTED OUT DB STUFF burger king letsgo
     fun addToDB(note: Note){
-        val dao = DataBaseDAO()
-        dao.addNote(note)
+//        val dao = DataBaseDAO()
+//        dao.addNote(note)
+
     }
 
     //returns the position of the carat of the text area
@@ -171,5 +182,11 @@ class Note(
 
     fun getWinSize(): Array<Double>{
         return arrayOf(this.winWidth, this.winHeight)
+    }
+
+    //Converts a model note to a DBNote
+    fun noteToDBNote(): DBNote {
+        return DBNote(this.getNoteName(), this.getContent(),
+            this.getCreationDate(), this.getLastModifiedDate())
     }
 }

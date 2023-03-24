@@ -15,13 +15,15 @@ import java.time.Duration
 
 
 @Serializable
-data class DBNote(val name: String, val data: String, val lmDate: String, val cDate: String,)
-
+data class DBNote(
+    val name: String,
+    val data: String,
+    val lmDate: String/*, val cDate: String*/)
 
 fun main() {
     val test = webService()
     println("Console Application:")
-    val post_response = test.post(DBNote("TestNote1", "Hello ${SysInfo.hostname}", "creationDateHere", "lmDateHere"))
+    //val post_response = test.post(DBNote("TestNote1", "Hello ${SysInfo.hostname}", "creationDateHere", "lmDateHere"))
 
     val get_response = test.get()
     println(get_response) // list of JSON objects from database
@@ -46,6 +48,7 @@ class webService{
 
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
         val json = Json { ignoreUnknownKeys = true }
+        println(response.body())
         return json.decodeFromString<ArrayList<DBNote>>(response.body())
     }
 

@@ -45,7 +45,7 @@ class Note(
     constructor(note: DBNote) : this() {
         noteName = note.name
         data = TextArea(note.data)
-        creationDate = note.cDate
+        //creationDate = note.cDate
         lastModifiedDate = note.lmDate
     }
     // undo / redo handler
@@ -186,7 +186,6 @@ class Note(
 
     //Converts a model note to a DBNote
     fun noteToDBNote(): DBNote {
-        return DBNote(this.getNoteName(), this.getContent(),
-            this.getCreationDate(), this.getLastModifiedDate())
+        return DBNote(this.getNoteName(), this.getContent(), this.getLastModifiedDate())
     }
 }

@@ -200,10 +200,10 @@ class Model {
         notes.clear()
         println("Before get request")
         val dbnotes = web.get()
-//        for(note in dbnotes){
-//            notes.add(Note(note))
-//            println("added "+ note.name + " from server to local")
-//        }
+        for(note in dbnotes){
+            notes.add(Note(note))
+            println("added "+ note.name + " from server to local")
+        }
         notifyObservers()
     }
 

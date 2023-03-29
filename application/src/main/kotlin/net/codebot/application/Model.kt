@@ -1,10 +1,5 @@
 package net.codebot.application
-import javafx.scene.control.TextArea
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.update
-import java.io.File
+import javafx.scene.web.HTMLEditor
 
 class Model {
 
@@ -13,15 +8,15 @@ class Model {
 
     // Views use this function to register themselves with the Model, and then get updates and states from the model.
     fun addView(view: IView){
-       views.add(view)
-       //view.updateView()
+        views.add(view)
+        //view.updateView()
     }
 
     // Notify all views that data has been changed
     fun notifyObservers(){
-       for (view in views){
-           view.updateView()
-       }
+        for (view in views){
+            view.updateView()
+        }
     }
 
     private var notes = ArrayList<Note>()
@@ -42,13 +37,32 @@ class Model {
     }
 
     fun createNote(name: String){
-        var note = Note(name)
+        var new_name = name
+        // check for duplicates
+        var dup = false
+        var tally = 0
+        for (item in notes) {
+            var na = item.getNoteName()
+            val pos = na.lastIndexOf(' ')
+            na = na.substring(0, pos)
+            if (na == name) {
+                dup = true
+                tally = tally + 1
+            }
+        }
+
+        if (!dup) {
+            new_name = new_name + " (0)"
+        } else {
+            new_name = new_name + " (" + tally + ")"
+        }
+        var note = Note(new_name)
         notes.add(note)
         notifyObservers()
-        addDataToDB(name)
+        addDataToDB(new_name)
     }
 
-    fun updateData(note: String, data: TextArea,  caratPOS: Int){
+    fun updateData(note: String, data: HTMLEditor,  caratPOS: Int){
         // updates the data of the note for now
         for (n in notes){
             if (n.getNoteName() == note){

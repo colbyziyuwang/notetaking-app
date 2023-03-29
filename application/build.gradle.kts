@@ -30,7 +30,9 @@ dependencies {
     implementation("org.jetbrains.exposed", "exposed-core", "0.40.1")
     implementation("org.jetbrains.exposed", "exposed-dao", "0.40.1")
     implementation("org.jetbrains.exposed", "exposed-jdbc", "0.40.1")
+    implementation("com.itextpdf:itext7-core:7.1.16")
     implementation("org.fxmisc.richtext", "richtextfx", "0.11.0")
+    implementation("org.jetbrains:markdown:0.4.1")
 }
 
 tasks.test {
@@ -50,7 +52,7 @@ application {
 javafx {
     // version is determined by the plugin above
     version = "18.0.2"
-    modules = listOf("javafx.controls", "javafx.graphics")
+    modules = listOf("javafx.controls", "javafx.graphics", "javafx.web")
 }
 
 // https://stackoverflow.com/questions/74453018/jlink-package-kotlin-in-both-merged-module-and-kotlin-stdlib

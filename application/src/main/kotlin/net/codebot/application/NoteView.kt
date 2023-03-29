@@ -1,7 +1,14 @@
 package net.codebot.application
+import com.itextpdf.kernel.pdf.PdfDocument
+import com.itextpdf.kernel.pdf.PdfWriter
+import com.itextpdf.layout.Document
+import com.itextpdf.layout.element.Paragraph
 import javafx.event.EventHandler
 import javafx.geometry.Pos
-import javafx.scene.control.*
+import javafx.scene.control.Button
+import javafx.scene.control.ScrollPane
+import javafx.scene.control.TextField
+import javafx.scene.control.ToolBar
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.KeyCode
@@ -11,7 +18,9 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
-
+import javafx.scene.web.HTMLEditor
+import java.nio.file.Files
+import java.nio.file.Paths
 
 
 
@@ -46,7 +55,7 @@ class NoteView (private val model: Model) : VBox(), IView{
     val directoryViewPane = BorderPane()
 
     val nameTextBox = TextField()
-    val dataArea = TextArea() // holds the visual aspects of the data
+    val dataArea = HTMLEditor() // holds the visual aspects of the data
     //val dataContainer = VBox()
 
     val saveButton = Button("")
@@ -63,19 +72,19 @@ class NoteView (private val model: Model) : VBox(), IView{
         }
         else {
             // display Note text
-            val text = Text(curNote.getData().text)
+            val text = Text(curNote.getData().htmlText)
             text.font = Font("Helvetica", 12.0)
             text.wrappingWidth = 350.0
 
-            dataArea.text = text.text
+            dataArea.htmlText = text.text
             val temp = curNote.getCarat() //debugging
-            dataArea.positionCaret(temp)
+            /*dataArea.positionCaret(temp)
             println("Positioned caret at ${temp}") //debugging
 
             dataArea.setOnKeyTyped {
                 model.updateData(curNote!!.getNoteName(), dataArea, curNote!!.getCarat())
                 dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
-            }
+            }*/
 
             dataArea.onKeyPressed = EventHandler { event ->
                 if (event.code == KeyCode.SPACE) {
@@ -111,8 +120,37 @@ class NoteView (private val model: Model) : VBox(), IView{
             }
 
             saveButton.setOnMouseClicked {
-                println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                // println("Caret position is ${curNote.getData().caretPosition}") //debugging
                 model.saveData(curNote.getNoteName())
+            }
+
+            // export to pdf button
+            val pdfButton = Button("Export to PDF")
+            pdfButton.setOnMouseClicked {
+                println("Exported to PDF")
+                val note = model.getCurrentNote()
+                val name = note?.getNoteName()
+                val contents = note?.getContent().toString()
+
+                if (name != null && contents.isNotEmpty()) {
+                    val desktopPath = System.getProperty("user.home") + "/Desktop/"
+                    val pdfFilePath = desktopPath + name + ".pdf"
+
+                    try {
+                        Files.createDirectories(Paths.get(desktopPath))
+                        val pdfWriter = PdfWriter(pdfFilePath)
+                        val pdfDocument = PdfDocument(pdfWriter)
+                        val document = Document(pdfDocument)
+
+                        document.add(Paragraph(contents))
+                        document.close()
+
+                        println("PDF saved to: $pdfFilePath")
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        println("Error exporting PDF: ${e.message}")
+                    }
+                }
             }
 
             // key combinations for keyboard shortcuts
@@ -129,18 +167,18 @@ class NoteView (private val model: Model) : VBox(), IView{
                     curNote!!.redoState()
                     println("redo key comb") // debugging
                 } else if (saveComb.match(event)) {
-                    println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                    // println("Caret position is ${curNote.getData().caretPosition}") //debugging
                     model.saveData(curNote.getNoteName())
                 }
             }
-
 
             //TODO: Once copy/paste is complete
             //val copyButton = Button("Copy")
             //val pasteButton = Button("Paste")
 
-        val noteToolBar = ToolBar() //Toolbar
-        noteToolBar.items.addAll(undoButton, redoButton, saveButton, closeButton)//, copyButton, pasteButton)
+            val noteToolBar = ToolBar() //Toolbar
+            noteToolBar.items.addAll(undoButton, redoButton, saveButton, closeButton,
+                pdfButton)//, copyButton, pasteButton)
 
             outmostPane.top = noteToolBar
             outmostPane.center = dataArea

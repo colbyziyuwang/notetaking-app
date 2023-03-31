@@ -4,7 +4,8 @@
 We intend to build a notetaking app for students who wish to take notes electronically in class. We hope to make the process of taking notes more efficient and more user friendly, and to have various functionalities such as code blocks.
 
 ## Team members
-Team Memebr: 
+Team Member: 
+
 Colby Wang: c684wang@uwaterloo.ca
 
 Aicha Ghidaoui: aghidaou@uwaterloo.ca
@@ -25,6 +26,6 @@ version 0.1: released Feb 17, 2023
 	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/Application_v.0.1.zip) (application)
 	
 version 0.2: released Mar 10, 2023
-	* release-notes (md)
-	* installers (application)
+	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.2-release-notes.md) (md)
+	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/tree/main/releases/Sprint%202%20demo%20executeables) (application)
 

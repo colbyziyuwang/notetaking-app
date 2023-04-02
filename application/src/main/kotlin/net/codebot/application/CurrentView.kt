@@ -1,6 +1,8 @@
 package net.codebot.application
 
-class CurrentView (private val model: Model){
-        private val noteView = NoteView(model)
+import net.codebot.shared.Model
+
+class CurrentView (private val model: Model, private val controller: ViewController){
+        private val noteView = NoteView(model, controller)
         var curView = noteView
 }

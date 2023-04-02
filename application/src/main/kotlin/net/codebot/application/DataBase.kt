@@ -1,5 +1,6 @@
 package net.codebot.application
 
+import net.codebot.shared.Note
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq

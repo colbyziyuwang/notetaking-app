@@ -1,16 +1,12 @@
 package net.codebot.application
 import javafx.application.Application
-import javafx.beans.value.ChangeListener
 import javafx.event.EventHandler
 import javafx.scene.Scene
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCodeCombination
 import javafx.scene.input.KeyCombination
 import javafx.stage.Stage
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.transaction
-import java.io.File
-import java.sql.DriverManager
+import net.codebot.shared.Model
 
 class Main : Application() {
     override fun start(stage: Stage) {
@@ -24,7 +20,10 @@ class Main : Application() {
 
         //Model generation
         val model = Model()
-        val currentView = CurrentView(model)
+
+        val controller = ViewController(model)
+
+        val currentView = CurrentView(model, controller)
 
         //default height and width values, put into variables for easy changing later
         var width = 500.0

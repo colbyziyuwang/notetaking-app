@@ -1,4 +1,4 @@
-package net.codebot.application
+package net.codebot.shared
 
 import javafx.stage.Stage
 

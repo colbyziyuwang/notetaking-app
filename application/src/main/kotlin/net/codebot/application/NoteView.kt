@@ -1,5 +1,4 @@
 package net.codebot.application
-import javafx.beans.value.ChangeListener
 import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.control.*
@@ -13,11 +12,13 @@ import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.layout.Document
 import com.itextpdf.layout.element.Paragraph
 import javafx.scene.control.Button
-import java.io.File
+import net.codebot.shared.IView
+import net.codebot.shared.Model
+import net.codebot.shared.Note
 import java.nio.file.Files
 import java.nio.file.Paths
 
-class NoteView (private val model: Model) : VBox(), IView{
+class NoteView (private val model: Model, private val controller: ViewController) : VBox(), IView {
 
     private var currentNote: Note? = null
 
@@ -27,11 +28,9 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         //Button Actions
         setOnMouseClicked {
-            ////TODO: Check for duplicate named note and throw appropriate errors
-
-
             if(nameTextBox.text.isEmpty()){
-                model.createNote("New Note") //TODO
+                controller.createNote("New Note")
+                //model.createNote("New Note") //TODO
             }
             else{
                 model.createNote(nameTextBox.text)
@@ -151,7 +150,7 @@ class NoteView (private val model: Model) : VBox(), IView{
     }
 
 
-    init {
+    init { // CONTROLLER
         model.addView(this)
 
         //setting up the view
@@ -176,6 +175,8 @@ class NoteView (private val model: Model) : VBox(), IView{
 
         //TODO : Implement Edit and Delete note actions
 
+
+        val web
         //registering view with the model when ready to start receiving data
         model.addView(this)
     }

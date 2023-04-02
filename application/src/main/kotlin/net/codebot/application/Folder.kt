@@ -1,5 +1,7 @@
 package net.codebot.application
 
+import net.codebot.shared.Note
+
 class Folder: Item {
     var folderName: String = "New Folder"
     val folderFiles = mutableListOf<Note>()

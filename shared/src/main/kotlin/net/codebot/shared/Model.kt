@@ -1,13 +1,6 @@
-package net.codebot.application
+package net.codebot.shared
 import javafx.scene.control.TextArea
-import kotlinx.serialization.json.Json
-import net.codebot.console.DBNote
-import net.codebot.console.webService
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.update
-import java.io.File
+
 
 class Model {
 
@@ -31,6 +24,7 @@ class Model {
     private var currentNote: Note? = null
 
     init {
+        //EXPORT TO CONTROLLER
         val web = webService()
         web.deleteAll() //Clearing previous notes FOR debugging
 
@@ -184,7 +178,7 @@ class Model {
     }
 
     //returns the requisite note from the DB
-    fun getNoteDB(name: String): Note{
+    fun getNoteDB(name: String): Note {
         val dao = DataBaseDAO()
         return dao.getNote(name)
     }

@@ -1,13 +1,7 @@
-package net.codebot.application
+package net.codebot.shared
 import javafx.scene.control.TextArea
 
 import net.codebot.console.DBNote
-import net.codebot.console.webService
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.transactions.TransactionManager
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.update
-import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -156,7 +150,7 @@ class Note(
     }
 
     // loads saved version of data
-    fun loadData(name: String): Note{
+    fun loadData(name: String): Note {
         val dao = DataBaseDAO()
         return dao.getNote(name)
     }

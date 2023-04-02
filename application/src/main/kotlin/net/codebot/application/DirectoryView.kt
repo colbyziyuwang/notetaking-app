@@ -7,10 +7,13 @@ import javafx.scene.control.Separator
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Priority
 import javafx.scene.layout.VBox
+import net.codebot.shared.IView
+import net.codebot.shared.Model
+import net.codebot.shared.Note
 import kotlin.Double.Companion.POSITIVE_INFINITY
 
 
-internal class DirectoryView(private val model: Model) : VBox(), IView{
+internal class DirectoryView(private val model: Model) : VBox(), IView {
     init {
         model.addView(this)
         updateView()

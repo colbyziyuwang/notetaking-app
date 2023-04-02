@@ -1,10 +1,9 @@
-package net.codebot.console
+package net.codebot.server
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import net.codebot.shared.SysInfo
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -30,7 +29,12 @@ fun main() {
 
 }
 
+
+
 class webService{
+    init {
+
+    }
     private val SERVER_ADDRESS = "http://127.0.0.1:8080/notes"
 
     //Get list of notes from online database
@@ -79,6 +83,10 @@ class webService{
         val response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body()
     }
+
+
+
+
 }
 
 

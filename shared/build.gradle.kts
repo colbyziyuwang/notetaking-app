@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.6.20"
     `java-library`
+    id("org.openjfx.javafxplugin") version "0.0.13"
 }
 
 group = "net.codebot"

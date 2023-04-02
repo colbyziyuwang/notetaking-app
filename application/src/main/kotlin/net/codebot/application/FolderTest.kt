@@ -1,4 +1,5 @@
 package net.codebot.application
+import net.codebot.shared.Note
 import org.testng.annotations.Test
 class FolderTest {
     @Test

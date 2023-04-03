@@ -1,5 +1,8 @@
 # Notetaking App
 
+## Copy Right:
+Copyright (c) 2023. Colby Wang, Aicha Ghidaoui, Hassan Hashmi, Jerry Li.
+
 ## Goal
 We intend to build a notetaking app for students who wish to take notes electronically in class. We hope to make the process of taking notes more efficient and more user friendly, and to have various functionalities such as code blocks.
 

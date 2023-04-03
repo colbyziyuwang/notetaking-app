@@ -89,14 +89,14 @@ class NoteView (private val model: Model) : VBox(), IView{
             //dataArea.positionCaret(temp)
             //println("Positioned caret at ${temp}") //debugging
 
-            dataArea.onKeyPressed = EventHandler { event ->
+            /*dataArea.onKeyPressed = EventHandler { event ->
                 if (event.code == KeyCode.SPACE) {
                     println("updated str:" + Jsoup.parse(dataArea.htmlText).text()) // debugging
                     model.updateData(curNote!!.getNoteName(), dataArea/*, curNote!!.getCarat()*/)
                 }
 
                 //dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
-            }
+            }*/
 
             /*dataArea.onKeyPressed = EventHandler { event ->
                 if (event.code == KeyCode.SPACE) {
@@ -133,6 +133,7 @@ class NoteView (private val model: Model) : VBox(), IView{
 
             saveButton.setOnMouseClicked {
                 // println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                model.updateData(curNote!!.getNoteName(), dataArea/*, curNote!!.getCarat()*/)
                 model.saveData(curNote.getNoteName())
             }
 

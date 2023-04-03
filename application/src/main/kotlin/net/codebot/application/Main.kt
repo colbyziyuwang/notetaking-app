@@ -20,6 +20,15 @@ class Main : Application() {
         val wid: Double = content[0].toDouble()
         val hei: Double = content[1].toDouble()
 
+        // files for stage positions
+        val fileName2 = "StagePosition.txt"
+        val file2 = File(fileName2)
+
+        // load settings
+        val content2: List<String> = file2.readLines()
+        val x: Double = content2[0].toDouble()
+        val y: Double = content2[1].toDouble()
+
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
@@ -42,6 +51,10 @@ class Main : Application() {
         scene.stylesheets.add("defaultStyle.css")
         stage.scene = scene
         stage.title = "NoteTaking application"
+
+        stage.x = x
+        stage.y = y
+
         stage.show()
 
         // Toggling between dark mode and light mode
@@ -85,6 +98,36 @@ class Main : Application() {
 
             // Write the updated contents back to the file
             file.writeText(fileContents.joinToString("\n"))
+        }
+
+        // track stage position
+        stage.xProperty().addListener { _, oldX, newX ->
+            // do something when the x property changes
+            println("Stage x changed from $oldX to $newX")
+
+            // Read the contents of the file
+            val fileContents2 = file2.readText().lines().toMutableList()
+
+            // Replace the first line with the new width value
+            fileContents2[0] = "$newX"
+
+            // Write the updated contents back to the file
+            file2.writeText(fileContents2.joinToString("\n"))
+        }
+
+        // add a listener to the y property
+        stage.yProperty().addListener { _, oldY, newY ->
+            // do something when the y property changes
+            println("Stage y changed from $oldY to $newY")
+
+            // Read the contents of the file
+            val fileContents2 = file2.readText().lines().toMutableList()
+
+            // Replace the first line with the new width value
+            fileContents2[1] = "$newY"
+
+            // Write the updated contents back to the file
+            file2.writeText(fileContents2.joinToString("\n"))
         }
 
     }

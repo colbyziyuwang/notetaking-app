@@ -24,6 +24,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.testng:testng:7.1.0")
     implementation("org.testng:testng:7.1.0")
+    implementation(project(mapOf("path" to ":console")))
     testImplementation(kotlin("test"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     implementation("org.xerial:sqlite-jdbc:3.39.3.0")

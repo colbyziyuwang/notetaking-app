@@ -4,17 +4,26 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../Gradle/gradle-7.3" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/application" />
             <option value="$PROJECT_DIR$/console" />
             <option value="$PROJECT_DIR$/shared" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$USER_HOME$/Downloads/JeffspringShit/sample-code-master-applications-service-spring-client-server/applications/service/spring-client-server" />
+        <option name="modules">
+          <set>
+            <option value="$USER_HOME$/Downloads/JeffspringShit/sample-code-master-applications-service-spring-client-server/applications/service/spring-client-server" />
+            <option value="$USER_HOME$/Downloads/JeffspringShit/sample-code-master-applications-service-spring-client-server/applications/service/spring-client-server/client" />
+            <option value="$USER_HOME$/Downloads/JeffspringShit/sample-code-master-applications-service-spring-client-server/applications/service/spring-client-server/server" />
+            <option value="$USER_HOME$/Downloads/JeffspringShit/sample-code-master-applications-service-spring-client-server/applications/service/spring-client-server/shared" />
           </set>
         </option>
       </GradleProjectSettings>

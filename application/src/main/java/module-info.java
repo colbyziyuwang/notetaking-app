@@ -7,5 +7,7 @@ module application {
     requires exposed.core;
     requires kernel;
     requires layout;
+    requires console;
+    requires kotlinx.serialization.json;
     exports net.codebot.application;
 }

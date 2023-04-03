@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.Text
 import javafx.scene.web.HTMLEditor
+import org.jsoup.Jsoup
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -77,24 +78,35 @@ class NoteView (private val model: Model) : VBox(), IView{
             text.wrappingWidth = 350.0
 
             dataArea.htmlText = text.text
-            val temp = curNote.getCarat() //debugging
-            /*dataArea.positionCaret(temp)
-            println("Positioned caret at ${temp}") //debugging
 
-            dataArea.setOnKeyTyped {
-                model.updateData(curNote!!.getNoteName(), dataArea, curNote!!.getCarat())
-                dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
-            }*/
+            // debugging:
+            /*println("text.text: " + text.text)
+            println("dataArea.htmlText: " + dataArea.htmlText)
+            println("dataArea.htmlText as str: " + Jsoup.parse("<html>hello</html>").text())*/
+
+
+            //val temp = curNote.getCarat() //debugging
+            //dataArea.positionCaret(temp)
+            //println("Positioned caret at ${temp}") //debugging
 
             dataArea.onKeyPressed = EventHandler { event ->
+                if (event.code == KeyCode.SPACE) {
+                    println("updated str:" + Jsoup.parse(dataArea.htmlText).text()) // debugging
+                    model.updateData(curNote!!.getNoteName(), dataArea/*, curNote!!.getCarat()*/)
+                }
+
+                //dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
+            }
+
+            /*dataArea.onKeyPressed = EventHandler { event ->
                 if (event.code == KeyCode.SPACE) {
                     curNote!!.saveState()
                     println("saved text") // debugging
                 }
-            }
+            }*/
 
             // buttons for note manipulation
-            val undoButton = Button("")
+            /*val undoButton = Button("")
             val redoButton = Button("")
 
             // adding icons
@@ -111,7 +123,7 @@ class NoteView (private val model: Model) : VBox(), IView{
             redoButton.setOnMouseClicked {
                 curNote!!.redoState()
                 println("redo") // for debugging
-            }
+            }*/
 
             val closeButton = Button("Close")
             closeButton.setOnMouseClicked {
@@ -130,7 +142,9 @@ class NoteView (private val model: Model) : VBox(), IView{
                 println("Exported to PDF")
                 val note = model.getCurrentNote()
                 val name = note?.getNoteName()
-                val contents = note?.getContent().toString()
+                val contents = Jsoup.parse(note?.getContent()).text().toString()
+
+                // println(contents) // debugging
 
                 if (name != null && contents.isNotEmpty()) {
                     val desktopPath = System.getProperty("user.home") + "/Desktop/"
@@ -154,19 +168,19 @@ class NoteView (private val model: Model) : VBox(), IView{
             }
 
             // key combinations for keyboard shortcuts
-            val undoComb = KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN)
-            val redoComb = KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN)
+            // val undoComb = KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN)
+            // val redoComb = KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN)
             val saveComb = KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN)
 
             // event handler for shortcuts
-            dataArea.onKeyPressed = EventHandler { event ->
-                if (undoComb.match(event)) {
+            outmostPane.onKeyPressed = EventHandler { event ->
+                /*if (undoComb.match(event)) {
                     curNote!!.undoState()
                     println("undo key comb") // debugging
                 } else if (redoComb.match(event)) {
                     curNote!!.redoState()
                     println("redo key comb") // debugging
-                } else if (saveComb.match(event)) {
+                } else */if (saveComb.match(event)) {
                     // println("Caret position is ${curNote.getData().caretPosition}") //debugging
                     model.saveData(curNote.getNoteName())
                 }
@@ -177,7 +191,7 @@ class NoteView (private val model: Model) : VBox(), IView{
             //val pasteButton = Button("Paste")
 
             val noteToolBar = ToolBar() //Toolbar
-            noteToolBar.items.addAll(undoButton, redoButton, saveButton, closeButton,
+            noteToolBar.items.addAll(/*undoButton, redoButton,*/ closeButton, saveButton,
                 pdfButton)//, copyButton, pasteButton)
 
             outmostPane.top = noteToolBar

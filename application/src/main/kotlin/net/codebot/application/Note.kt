@@ -17,12 +17,13 @@ class Note(
     private var winHeight = 500.0
 
     //Constructor that corresponds to a Database retrieval
-    constructor(name: String, text: String, crDate: String, lmDate: String, carat: Int, width: Double, height: Double) : this() {
+    constructor(name: String, text: String, crDate: String, lmDate: String, /*carat: Int,*/ width: Double, height: Double) : this() {
         noteName = name
         data = HTMLEditor()
+        data.htmlText = text
         creationDate = crDate
         lastModifiedDate = lmDate
-        caratPOS = carat
+        //caratPOS = carat
         winWidth = width
         winHeight = height
     }
@@ -34,7 +35,7 @@ class Note(
     }
 
     // undo / redo handler
-    private data class State(val data: String)
+   /* private data class State(val data: String)
 
     private object UndoRedoManager {
         private val states = mutableListOf<State>()
@@ -53,19 +54,19 @@ class Note(
     }
 
     fun saveState() { // saves the current state of the document (should be called after space pressed)
-        UndoRedoManager.saveState(data = this.data.htmlText)
+        UndoRedoManager.saveState(data = Jsoup.parse(this.data.htmlText).text())
     }
 
     fun redoState() { // restores the state before undo was called
         val state = UndoRedoManager.redoState()
-        this.data.htmlText = state.data
+        Jsoup.parse(this.data.htmlText).text() = state.data
     }
 
     fun undoState() { // undo the last action. The previous state is saved to be able to redo the action
         val state = UndoRedoManager.undoState()
-        UndoRedoManager.saveUndo(data = this.data.htmlText)
-        this.data.htmlText = state.data
-    }
+        UndoRedoManager.saveUndo(data = Jsoup.parse(this.data.htmlText).text())
+        Jsoup.parse(this.data.htmlText).text = state.data
+    }*/
 
 
     // Returns the noteName
@@ -73,13 +74,15 @@ class Note(
         return this.noteName
     }
 
-    // Returns the noteName
+    // Returns the noteData (i.e. HTMLEditor)
     fun getData(): HTMLEditor {
         return this.data
     }
 
     // returns note content in a string
     fun getContent(): String {
+        // println(this.data.htmlText) // debugging
+        // println(Jsoup.parse(this.data.htmlText).text()) // debugging
         return this.data.htmlText
     }
 
@@ -110,9 +113,13 @@ class Note(
     //  Call when note is edited
     //  TODO: need a system to update text such that state of text in UI is accurately reflected in text
 
-    fun updateData(text: HTMLEditor, carat: Int) {
+    fun updateData(text: HTMLEditor/*, carat: Int*/) {
+        println("update data: " + this.data.htmlText) // debugging
+        println("new data: " + text.htmlText) // debugging
+
         this.data = text
-        this.caratPOS = carat
+        this.data.htmlText = text.htmlText
+        //this.caratPOS = carat
         //parseForCode()
         //parseForLatex()
     }

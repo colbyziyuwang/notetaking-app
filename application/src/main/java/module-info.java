@@ -10,5 +10,6 @@ module application {
     requires javafx.web;
     //requires javafx.fxml;
     requires org.testng;
+    requires jsoup;
     exports net.codebot.application;
 }

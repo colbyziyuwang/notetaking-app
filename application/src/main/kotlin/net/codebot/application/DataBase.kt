@@ -111,7 +111,7 @@ class DataBaseDAO {
         val note = transaction {
             val note = DataBase.select{DataBase.name eq noteName}.single()
             Note(note[DataBase.name], note[DataBase.content], note[DataBase.creationDate],
-                note[DataBase.lastModifiedDate], note[DataBase.caratPosition], note[DataBase.winWidth],
+                note[DataBase.lastModifiedDate]/*, note[DataBase.caratPosition]*/, note[DataBase.winWidth],
                 note[DataBase.winHeight])
         }
         TransactionManager.closeAndUnregister(db)

@@ -62,11 +62,12 @@ class Model {
         addDataToDB(new_name)
     }
 
-    fun updateData(note: String, data: HTMLEditor,  caratPOS: Int){
+    fun updateData(note: String, data: HTMLEditor/*,  caratPOS: Int*/){
         // updates the data of the note for now
         for (n in notes){
             if (n.getNoteName() == note){
-                n.updateData(data, caratPOS)
+                //println(data.htmlText)
+                n.updateData(data/*, caratPOS*/)
                 notifyObservers()
                 return //Debugging may need to be replaced
             }

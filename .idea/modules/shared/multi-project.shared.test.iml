@@ -63,6 +63,7 @@
     <output-test url="file://$MODULE_DIR$/../../../shared/build/classes/java/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../shared/src/test" />
+    <content url="file://$MODULE_DIR$/../../../shared/src/test" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="multi-project.shared.main" />

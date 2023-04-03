@@ -6,9 +6,19 @@ import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCodeCombination
 import javafx.scene.input.KeyCombination
 import javafx.stage.Stage
+import java.io.File
 
 class Main : Application() {
     override fun start(stage: Stage) {
+
+        // files for local settings
+        val fileName = "NoteSettings.txt"
+        val file = File(fileName)
+
+        // load settings
+        val content: List<String> = file.readLines()
+        val wid: Double = content[0].toDouble()
+        val hei: Double = content[1].toDouble()
 
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
@@ -22,11 +32,11 @@ class Main : Application() {
         val currentView = CurrentView(model)
 
         //default height and width values, put into variables for easy changing later
-        var width = 500.0
-        var height = 500.0
+        //var wid = 500.0
+        //var hei = 500.0
 
         //Applying window settings to load stored window size
-        val scene = Scene(currentView.curView, width, height)
+        val scene = Scene(currentView.curView, wid, hei)
 
         // Default mode is light mode
         scene.stylesheets.add("defaultStyle.css")
@@ -44,6 +54,39 @@ class Main : Application() {
                 scene.stylesheets.add("defaultStyle.css")
             }
         }
+
+        // track scene size changes
+        // Add listener to scene width property
+
+        scene.widthProperty().addListener { _, oldWidth, newWidth ->
+            // Do something when the scene width changes
+            println("Scene width changed from $oldWidth to $newWidth")
+
+            // Read the contents of the file
+            val fileContents = file.readText().lines().toMutableList()
+
+            // Replace the first line with the new width value
+            fileContents[0] = "$newWidth"
+
+            // Write the updated contents back to the file
+            file.writeText(fileContents.joinToString("\n"))
+        }
+
+
+        // Add listener to scene height property
+        scene.heightProperty().addListener { _, oldHeight, newHeight ->
+            // Do something when the scene height changes
+            println("Scene height changed from $oldHeight to $newHeight")
+
+            val fileContents = file.readText().lines().toMutableList()
+
+            // Replace the first line with the new width value
+            fileContents[1] = "$newHeight"
+
+            // Write the updated contents back to the file
+            file.writeText(fileContents.joinToString("\n"))
+        }
+
     }
 }
 

@@ -2,42 +2,42 @@
     -fx-background-color: #E2F4ED;
 }
 
-TextArea {
-    -fx-text-fill: #13293D;
+/*HTMLEditor {
     -fx-box-shadow: none;
-    -fx-font-family: "Raleway", sans-serif;
-    -fx-font-size: 14px;
-    /*-fx-display-caret:true;*/
-    -fx-padding: 10 10;
+    -fx-display-caret:true;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
     -fx-background-color: #E2F4ED;
     -fx-color: #E2F4ED;
 }
 
-TextArea .content {
-     -fx-font-family: "Raleway", sans-serif;
-     -fx-font-size: 14px;
+htmlText {
+     -fx-background-color: #F8FCFA;
      -fx-padding: 10 10;
-}
-
+     -fx-border-shadow: none;
+}*/
 
 ToolBar {
     -fx-background-color: #C2E7D9;
     -fx-padding: 10 10;
 }
 
-.button {
-    /*-fx-color: rgba(4, 113, 166, 1);
-    -fx-border: none;
-    -fx-padding: 10 20;
-    -fx-box-sizing: border-box;*/
+.button, .button .radio {
+    /* animation for hover (doesnt seem to work ; v ;) */
     -fx-transition: all 0.2s ease 0s;
+
+    /* text color */
     -fx-text-fill: #F6F0ED;
+
+    /* bg color */
     -fx-background-color: #177578;
+
+    /* shape*/
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-padding: 7 20;
+
+    /* font*/
     -fx-font-family: 'Raleway', sans-serif;
     -fx-font-size: 14px;
 }
@@ -50,16 +50,58 @@ ToolBar {
     -fx-border: none;
 }
 
+#noteBox {
+    -fx-padding: 10 20;
+    -fx-background-color: #F8FCFA;
 
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
 
-/*.scene {
-      --pink: rgba(162, 132, 151, 1);
-      --cream: rgba(234, 242, 239, 1);
-      --light-blue: rgba(76, 152, 197, 1);
-      --medium-blue: rgba(4, 113, 166, 1);
-      --dark-blue: rgba(6, 24, 38, 1);
-      --light-grey: rgba(0, 0, 0, 0.1);
-      --medium-grey: rgba(0, 0, 0, 0.3);
-      --dark-grey: rgba(0, 0, 0, 0.5);
-      --transparent-white: rgba(255, 255, 255, 0.5);
-}*/
+#noteBox:hover {
+    -fx-background-color: #FFFFFF;
+    /* -fx-border-color: #FFFFFF; */
+}
+
+#noteBoxTitle {
+    -fx-font-weight: bold;
+}
+
+Separator .line {
+    -fx-border-width: 5;
+    -fx-border-color: transparent;
+}
+
+ScrollPane {
+    -fx-padding: 10;
+    -fx-background-color: #E2F4ED;
+    -fx-effect: null;
+}
+
+ScrollBar {
+    -fx-background-color: #E2F4ED;
+}
+
+ScrollBar .thumb {
+    -fx-background-color: #177578;
+}
+
+ScrollBar .increment-arrow,  .decrement-arrow{
+    -fx-background-color: #177578;
+    -fx-effect: none;
+}
+
+ScrollBar .increment-arrow:hover, .decrement-arrow:hover {
+    -fx-background-color: #4BC6B9;
+}
+
+TextField {
+    -fx-background-color: #F8FCFA;
+    -fx-padding: 7 10;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+TextField:focus {
+    -fx-effect: none;
+}

@@ -8,6 +8,7 @@ import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import java.io.File
+import javafx.scene.web.HTMLEditor
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -15,7 +16,7 @@ import java.time.format.DateTimeFormatter
 
 class Note(
     private var noteName: String = "New Note",
-    private var data: TextArea = TextArea("Add your text here...")// The contents of the note. Will be text for now, but may become a whole class later.
+    private var data: HTMLEditor = HTMLEditor()// The contents of the note. Will be text for now, but may become a whole class later.
 ){
 
     // Properties
@@ -26,12 +27,13 @@ class Note(
     private var winHeight = 500.0
 
     //Constructor that corresponds to a Database retrieval
-    constructor(name: String, text: String, crDate: String, lmDate: String, carat: Int, width: Double, height: Double) : this() {
+    constructor(name: String, text: String, crDate: String, lmDate: String, /*carat: Int,*/ width: Double, height: Double) : this() {
         noteName = name
-        data = TextArea(text)
+        data = HTMLEditor()
+        data.htmlText = text
         creationDate = crDate
         lastModifiedDate = lmDate
-        caratPOS = carat
+        //caratPOS = carat
         winWidth = width
         winHeight = height
     }
@@ -39,17 +41,19 @@ class Note(
     //Constructor for creating a file when a name is passed
     constructor(name: String): this(){
         noteName = name
-        data = TextArea("Add your text here...")
+        data = HTMLEditor()
     }
 
     constructor(note: DBNote) : this() {
         noteName = note.name
-        data = TextArea(note.data)
+        data = HTMLEditor()
+        data.htmlText = note.data
+        //data.htmlText = note.data.htmlText
         //creationDate = note.cDate
         lastModifiedDate = note.lmDate
     }
     // undo / redo handler
-    private data class State(val data: String)
+   /* private data class State(val data: String)
 
     private object UndoRedoManager {
         private val states = mutableListOf<State>()
@@ -68,19 +72,19 @@ class Note(
     }
 
     fun saveState() { // saves the current state of the document (should be called after space pressed)
-        UndoRedoManager.saveState(data = this.data.text)
+        UndoRedoManager.saveState(data = Jsoup.parse(this.data.htmlText).text())
     }
 
     fun redoState() { // restores the state before undo was called
         val state = UndoRedoManager.redoState()
-        this.data.text = state.data
+        Jsoup.parse(this.data.htmlText).text() = state.data
     }
 
     fun undoState() { // undo the last action. The previous state is saved to be able to redo the action
         val state = UndoRedoManager.undoState()
-        UndoRedoManager.saveUndo(data = this.data.text)
-        this.data.text = state.data
-    }
+        UndoRedoManager.saveUndo(data = Jsoup.parse(this.data.htmlText).text())
+        Jsoup.parse(this.data.htmlText).text = state.data
+    }*/
 
 
     // Returns the noteName
@@ -88,15 +92,18 @@ class Note(
         return this.noteName
     }
 
-    // Returns the noteName
-    fun getData(): TextArea {
+    // Returns the noteData (i.e. HTMLEditor)
+    fun getData(): HTMLEditor {
         return this.data
     }
 
     // returns note content in a string
     fun getContent(): String {
-        return this.data.getText()
+        // println(this.data.htmlText) // debugging
+        // println(Jsoup.parse(this.data.htmlText).text()) // debugging
+        return this.data.htmlText
     }
+
     // Returns the lastModifiedDate
     fun getLastModifiedDate(): String {
         return lastModifiedDate
@@ -124,9 +131,13 @@ class Note(
     //  Call when note is edited
     //  TODO: need a system to update text such that state of text in UI is accurately reflected in text
 
-    fun updateData(text: TextArea, carat: Int) {
+    fun updateData(text: HTMLEditor/*, carat: Int*/) {
+        println("update data: " + this.data.htmlText) // debugging
+        println("new data: " + text.htmlText) // debugging
+
         this.data = text
-        this.caratPOS = carat
+        this.data.htmlText = text.htmlText
+        //this.caratPOS = carat
         //parseForCode()
         //parseForLatex()
     }

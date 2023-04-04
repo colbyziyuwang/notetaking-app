@@ -1,9 +1,14 @@
 package net.codebot.application
-import javafx.beans.value.ChangeListener
 import javafx.event.EventHandler
 import javafx.geometry.Pos
-import javafx.scene.control.*
+import javafx.scene.control.ScrollPane
+import javafx.scene.control.TextField
+import javafx.scene.control.ToolBar
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyCodeCombination
+import javafx.scene.input.KeyCombination
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
@@ -14,6 +19,8 @@ import com.itextpdf.layout.Document
 import com.itextpdf.layout.element.Paragraph
 import javafx.scene.control.Button
 import java.io.File
+import javafx.scene.web.HTMLEditor
+import org.jsoup.Jsoup
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -29,11 +36,9 @@ class NoteView (private val model: Model) : VBox(), IView{
         setOnMouseClicked {
             ////TODO: Check for duplicate named note and throw appropriate errors
 
-
             if(nameTextBox.text.isEmpty()){
                 model.createNote("New Note") //TODO
-            }
-            else{
+            } else {
                 model.createNote(nameTextBox.text)
             }
         }
@@ -50,13 +55,16 @@ class NoteView (private val model: Model) : VBox(), IView{
     val directoryViewPane = BorderPane()
 
     val nameTextBox = TextField()
-    val dataArea = TextArea() // holds the visual aspects of the data
+    val dataArea = HTMLEditor() // holds the visual aspects of the data
     //val dataContainer = VBox()
 
-
-    val saveButton = Button("Save")
+    val saveButton = Button("")
 
     override fun updateView() {
+        // this wouldn't run outside the function under the declaration for some reason
+        val saveIcon = Image("save-icon.png")
+        saveButton.graphic = ImageView(saveIcon)
+
         var curNote = model.getCurrentNote()
 
         if(curNote == null){
@@ -64,34 +72,57 @@ class NoteView (private val model: Model) : VBox(), IView{
         }
         else {
             // display Note text
-            val text = Text(curNote.getData().text)
+            val text = Text(curNote.getData().htmlText)
             text.font = Font("Helvetica", 12.0)
             text.wrappingWidth = 350.0
 
-            dataArea.text = text.text
-            val temp = curNote.getCarat() //debugging
-            dataArea.positionCaret(temp)
-            println("Positioned caret at ${temp}") //debugging
-            dataArea.onKeyPressed = EventHandler { event ->
-                if (event.code == KeyCode.SPACE) curNote!!.saveState()
-            }
+            dataArea.htmlText = text.text
 
-            dataArea.setOnKeyTyped {
-                model.updateData(curNote!!.getNoteName(), dataArea, curNote!!.getCarat())
-                dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
-            }
+            // debugging:
+            /*println("text.text: " + text.text)
+            println("dataArea.htmlText: " + dataArea.htmlText)
+            println("dataArea.htmlText as str: " + Jsoup.parse("<html>hello</html>").text())*/
+
+
+            //val temp = curNote.getCarat() //debugging
+            //dataArea.positionCaret(temp)
+            //println("Positioned caret at ${temp}") //debugging
+
+            /*dataArea.onKeyPressed = EventHandler { event ->
+                if (event.code == KeyCode.SPACE) {
+                    println("updated str:" + Jsoup.parse(dataArea.htmlText).text()) // debugging
+                    model.updateData(curNote!!.getNoteName(), dataArea/*, curNote!!.getCarat()*/)
+                }
+
+                //dataArea.positionCaret(dataArea.text.length) //fixing cursor postion
+            }*/
+
+            /*dataArea.onKeyPressed = EventHandler { event ->
+                if (event.code == KeyCode.SPACE) {
+                    curNote!!.saveState()
+                    println("saved text") // debugging
+                }
+            }*/
 
             // buttons for note manipulation
-            val undoButton = Button("Undo")
+            /*val undoButton = Button("")
+            val redoButton = Button("")
+
+            // adding icons
+            val undoIcon = Image("undo-icon.png")
+            undoButton.graphic = ImageView(undoIcon)
+            val redoIcon = Image("redo-icon.png")
+            redoButton.graphic = ImageView(redoIcon)
+
             undoButton.setOnMouseClicked {
                 curNote!!.undoState()
-                println("undo")
+                println("undo") // for debugging
             }
-            val redoButton = Button("Redo")
+
             redoButton.setOnMouseClicked {
                 curNote!!.redoState()
-                println("redo")
-            }
+                println("redo") // for debugging
+            }*/
 
             val closeButton = Button("Close")
             closeButton.setOnMouseClicked {
@@ -99,9 +130,9 @@ class NoteView (private val model: Model) : VBox(), IView{
                 model.updateNotes()
             }
 
-
             saveButton.setOnMouseClicked {
-                println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                // println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                model.updateData(curNote!!.getNoteName(), dataArea/*, curNote!!.getCarat()*/)
                 model.saveData(curNote.getNoteName())
             }
 
@@ -111,7 +142,10 @@ class NoteView (private val model: Model) : VBox(), IView{
                 println("Exported to PDF")
                 val note = model.getCurrentNote()
                 val name = note?.getNoteName()
-                val contents = note?.getContent().toString()
+                val contents = Jsoup.parse(note?.getContent()).text().toString()
+
+                // println(contents) // debugging
+
 
                 if (name != null && contents.isNotEmpty()) {
                     val desktopPath = System.getProperty("user.home") + "/Desktop/"
@@ -134,13 +168,31 @@ class NoteView (private val model: Model) : VBox(), IView{
                 }
             }
 
+            // key combinations for keyboard shortcuts
+            // val undoComb = KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN)
+            // val redoComb = KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN)
+            val saveComb = KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN)
+
+            // event handler for shortcuts
+            outmostPane.onKeyPressed = EventHandler { event ->
+                /*if (undoComb.match(event)) {
+                    curNote!!.undoState()
+                    println("undo key comb") // debugging
+                } else if (redoComb.match(event)) {
+                    curNote!!.redoState()
+                    println("redo key comb") // debugging
+                } else */if (saveComb.match(event)) {
+                    // println("Caret position is ${curNote.getData().caretPosition}") //debugging
+                    model.saveData(curNote.getNoteName())
+                }
+            }
             //TODO: Once copy/paste is complete
             //val copyButton = Button("Copy")
             //val pasteButton = Button("Paste")
 
-        val noteToolBar = ToolBar() //Toolbar
-        noteToolBar.items.addAll(undoButton, redoButton, saveButton, closeButton,
-            pdfButton)//, copyButton, pasteButton)
+            val noteToolBar = ToolBar() //Toolbar
+            noteToolBar.items.addAll(/*undoButton, redoButton,*/ closeButton, saveButton,
+                pdfButton)//, copyButton, pasteButton)
 
             outmostPane.top = noteToolBar
             outmostPane.center = dataArea
@@ -158,7 +210,6 @@ class NoteView (private val model: Model) : VBox(), IView{
         this.alignment = Pos.CENTER
         this.minHeight = 100.0
 
-
         directoryToolBar.items.setAll(nameTextBox, createButton) //adding to toolbar
 
         directoryViewPane.top = directoryToolBar // Adding to the outer box
@@ -172,7 +223,6 @@ class NoteView (private val model: Model) : VBox(), IView{
         }
 
         children.setAll(directoryViewPane)
-
 
         //TODO : Implement Edit and Delete note actions
 

@@ -8,6 +8,7 @@ import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import java.io.File
+import javafx.scene.web.HTMLEditor
 
 class Model {
 
@@ -16,15 +17,15 @@ class Model {
 
     // Views use this function to register themselves with the Model, and then get updates and states from the model.
     fun addView(view: IView){
-       views.add(view)
-       //view.updateView()
+        views.add(view)
+        //view.updateView()
     }
 
     // Notify all views that data has been changed
     fun notifyObservers(){
-       for (view in views){
-           view.updateView()
-       }
+        for (view in views){
+            view.updateView()
+        }
     }
 
     private var notes = ArrayList<Note>()
@@ -70,14 +71,14 @@ class Model {
         notes.add(note)
         addDataToDB(note)
         notifyObservers()
-
     }
 
-    fun updateData(note: String, data: TextArea,  caratPOS: Int){
+    fun updateData(note: String, data: HTMLEditor/*,  caratPOS: Int*/){
         // updates the data of the note for now
         for (n in notes){
             if (n.getNoteName() == note){
-                n.updateData(data, caratPOS)
+                //println(data.htmlText)
+                n.updateData(data/*, caratPOS*/)
                 notifyObservers()
                 return //Debugging may need to be replaced
             }

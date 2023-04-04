@@ -1,9 +1,9 @@
 package net.codebot.application
 
-import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.transactions.*
+import org.jetbrains.exposed.sql.transactions.TransactionManager
+import org.jetbrains.exposed.sql.transactions.transaction
 
 
 object DataBase : Table() {
@@ -44,7 +44,7 @@ class DataBaseDAO {
             //TODO: Check that note exists and if it doesnt insert it
             DataBase.update({DataBase.name eq note.getNoteName()}){ row ->
                 row[name] = note.getNoteName()
-                row[content] = note.getData().text
+                row[content] = note.getData().htmlText
                 row[caratPosition] = note.getCarat()
                 row[creationDate] = note.getCreationDate()
                 row[lastModifiedDate] = note.getLastModifiedDate()
@@ -73,7 +73,7 @@ class DataBaseDAO {
             if(DataBase.select {DataBase.name eq note.getNoteName()}.empty()){ // Adding to the database only if note name doesnt already exist
                 DataBase.insert { newRow ->
                     newRow[name] = note.getNoteName()
-                    newRow[content] = note.getData().text
+                    newRow[content] = note.getData().htmlText
                     newRow[caratPosition] = note.getCarat()
                     newRow[creationDate] = note.getCreationDate()
                     newRow[lastModifiedDate] = note.getLastModifiedDate()
@@ -111,7 +111,7 @@ class DataBaseDAO {
         val note = transaction {
             val note = DataBase.select{DataBase.name eq noteName}.single()
             Note(note[DataBase.name], note[DataBase.content], note[DataBase.creationDate],
-                note[DataBase.lastModifiedDate], note[DataBase.caratPosition], note[DataBase.winWidth],
+                note[DataBase.lastModifiedDate]/*, note[DataBase.caratPosition]*/, note[DataBase.winWidth],
                 note[DataBase.winHeight])
         }
         TransactionManager.closeAndUnregister(db)

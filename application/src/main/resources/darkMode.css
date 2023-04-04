@@ -8,7 +8,6 @@ TextArea {
     -fx-font-family: "Raleway", sans-serif;
     -fx-font-size: 14px;
     -fx-display-caret:true;
-    -fx-padding: 10 10;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
     -fx-background-color: #050A10;
@@ -18,11 +17,10 @@ TextArea {
 TextArea .content {
      -fx-font-family: "Raleway", sans-serif;
      -fx-font-size: 14px;
-     -fx-background-color: #0F1E39;
-     -fx-box-shadow: none;
+     -fx-background-color: #081327;
+     -fx-border-shadow: none;
      -fx-padding: 10 10;
 }
-
 
 ToolBar {
     -fx-background-color: #0F1E39;
@@ -30,19 +28,16 @@ ToolBar {
 }
 
 .button {
-    /*-fx-color: rgba(4, 113, 166, 1);
-    -fx-border: none;
-    -fx-padding: 10 20;
-    -fx-box-sizing: border-box;*/
     -fx-transition: all 0.2s ease 0s;
     -fx-text-fill: #F6F0ED;
     -fx-background-color: #274C91;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-padding: 7 20;
-    -fx-font-family: 'Raleway', sans-serif;
+    -fx-font-family: "Raleway", sans-serif;
     -fx-font-size: 14px;
 }
+
 
 .button:hover {
     -fx-background-color: #5075B9;
@@ -52,16 +47,54 @@ ToolBar {
     -fx-border: none;
 }
 
+Label {
+    -fx-text-fill: #F6F0ED;
+}
 
+#noteBox {
+    -fx-padding: 10 20;
+    -fx-background-color: #081327;
 
-/*.scene {
-      --pink: rgba(162, 132, 151, 1);
-      --cream: rgba(234, 242, 239, 1);
-      --light-blue: rgba(76, 152, 197, 1);
-      --medium-blue: rgba(4, 113, 166, 1);
-      --dark-blue: rgba(6, 24, 38, 1);
-      --light-grey: rgba(0, 0, 0, 0.1);
-      --medium-grey: rgba(0, 0, 0, 0.3);
-      --dark-grey: rgba(0, 0, 0, 0.5);
-      --transparent-white: rgba(255, 255, 255, 0.5);
-}*/
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+#noteBox:hover {
+    -fx-background-color: #0C1A31;
+}
+
+Separator .line {
+    -fx-border-color: #050A10;
+    -fx-border-width: 5;
+}
+
+ScrollPane {
+    -fx-padding: 10;
+    -fx-background-color: #050A10;
+    -fx-effect: null;
+}
+
+ScrollBar {
+    -fx-background-color: #050A10;
+}
+
+ScrollBar .thumb {
+    -fx-background-color: #274C91;
+}
+
+ScrollBar .increment-arrow,  .decrement-arrow{
+    -fx-background-color: #274C91;
+    -fx-effect: none;
+}
+
+ScrollBar .increment-arrow:hover, .decrement-arrow:hover {
+    -fx-background-color: #5075B9;
+}
+
+TextField {
+    -fx-background-color: #081327;
+    -fx-text-fill: #F6F0ED;
+    -fx-padding: 7 10;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}

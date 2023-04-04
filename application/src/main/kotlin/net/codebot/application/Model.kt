@@ -33,12 +33,17 @@ class Model {
 
     init {
         val web = webService()
-        web.deleteAll() //Clearing previous notes FOR debugging
+        val dbnotelist = web.get()
 
-        // add some notes for debugging
-        createNote("Note 1")
-        createNote("Note 2")
-        createNote("Note 3")
+        for(note in dbnotelist){
+            notes.add(Note(note))
+        }
+//        web.deleteAll() //Clearing previous notes FOR debugging
+//
+//        // add some notes for debugging
+//        createNote("Note 1")
+//        createNote("Note 2")
+//        createNote("Note 3")
 
     }
 
@@ -207,5 +212,6 @@ class Model {
         }
         notifyObservers()
     }
+
 
 }

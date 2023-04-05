@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9bd056c-b11e-4bcb-b919-1289d94db06e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/application/net.codebot.multi-project.application.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/console/multi-project.console.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/shared/multi-project.shared.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jsoup_jsoup_1_7_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_controls_18_0_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_openjfx_javafx_media_18_0_22.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/NoteSettings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/application/NoteSettings.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/StagePosition.txt" beforeDir="false" afterPath="$PROJECT_DIR$/application/StagePosition.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/kotlin/net/codebot/application/Model.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,17 +42,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
                 <item name="application" type="2d1252cf:ModuleNode" />
               </path>
               <path>
@@ -76,27 +60,27 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="application" type="2d1252cf:ModuleNode" />
+                <item name="server" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="multi-project" type="f1a62948:ProjectNode" />
+                <item name="server" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="multi-project" type="f1a62948:ProjectNode" />
+                <item name="server" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="multi-project" type="f1a62948:ProjectNode" />
+                <item name="server" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="server" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="server" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="multi-project" type="f1a62948:ProjectNode" />
-                <item name="server" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -105,15 +89,28 @@
       </state>
     </system>
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2O1FUqD0e5ee6xkGJzDyjj15gzX" />
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Gradle.notetaking-app:application [run]">
     <configuration name="notetaking-app [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -136,7 +133,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="notetaking-app [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="notetaking-app [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -147,7 +144,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value="run" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -169,6 +166,27 @@
         <option name="taskNames">
           <list>
             <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="notetaking-app:server [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/server" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -202,13 +220,22 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.notetaking-app:application [run]" />
-        <item itemvalue="Gradle.notetaking-app:server [bootRun]" />
-        <item itemvalue="Gradle.notetaking-app [clean]" />
+        <item itemvalue="Gradle.notetaking-app:server [bootJar]" />
+        <item itemvalue="Gradle.notetaking-app [run]" />
         <item itemvalue="Gradle.notetaking-app [bootRun]" />
+        <item itemvalue="Gradle.notetaking-app:server [bootRun]" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9bd056c-b11e-4bcb-b919-1289d94db06e" name="Changes" comment="" />
+      <created>1680720210132</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680720210132</updated>
+    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

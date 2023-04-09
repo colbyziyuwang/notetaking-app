@@ -18,7 +18,9 @@ Hassan Hashmi: h4hashimi@uwaterloo.ca
 Jerry Li: zy37li@uwaterloo.ca
 
 ## Quick-start
-You can download a zip folder from the releases folder, inside the zip folder you will find a bin directory. The application is inside that bin directory. Click on it and it will run.
+First open docker on your machine and execute the following  terminal command: docker pull kuromaple/spring-server
+Next run the image on port 8080 via the command: docker run -p 8080:8080 kuromaple/spring-server
+Lastly downlaod the exectuable file from the releases/Final folder. This file can be executed in terminal.
 
 ## Screenshots/videos
 Optional, but often helpful to have a screenshot or demo-video for new users.

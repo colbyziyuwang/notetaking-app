@@ -38,3 +38,8 @@ version 0.3: released Mar 24, 2023
 	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.3-release-notes.md) (md)
 	* installers
 
+
+version 0.4: released April 10, 2023
+	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.4-release-notes.md) (md)
+	* installers
+

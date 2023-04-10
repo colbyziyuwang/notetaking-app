@@ -42,10 +42,10 @@ version 0.2: released Mar 10, 2023
 
 version 0.3: released Mar 24, 2023
 	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.3-release-notes.md) (md)
-	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/tree/main/releases/Sprint%202%20demo%20executeables)
+	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/tree/main/releases/Sprint%202%20demo%20executeables) (application)
 
 
 version 0.4: released April 10, 2023
 	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.4-release-notes.md) (md)
-	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/tree/main/releases/Final%20Submission)
+	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/tree/main/releases/Final%20Submission) (application)
 

@@ -1,4 +1,4 @@
 
 rootProject.name = "multi-project"
 
-include("application", "console", "shared", "server")
+include("application", "console", "shared")

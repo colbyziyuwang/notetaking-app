@@ -29,6 +29,14 @@ class Main : Application() {
         val x: Double = content2[0].toDouble()
         val y: Double = content2[1].toDouble()
 
+        // files for whether stage is dark or light
+        val fileName3 = "Mode.txt"
+        val file3 = File(fileName3)
+
+        // load settings
+        val content3: List<String> = file3.readLines()
+        val mode: String = content3[0]
+
         // MVC design based off of
         // https://git.uwaterloo.ca/cs349/public/sample-code/-/blob/master/MVC/03.MVC2/src/main/kotlin/MVC2.kt
 
@@ -48,7 +56,12 @@ class Main : Application() {
         val scene = Scene(currentView.curView, wid, hei)
 
         // Default mode is light mode
-        scene.stylesheets.add("defaultStyle.css")
+        if (mode == "Light") {
+            scene.stylesheets.add("defaultStyle.css")
+        } else {
+            scene.stylesheets.add("darkMode.css")
+        }
+
         stage.scene = scene
         stage.title = "NoteTaking application"
 
@@ -62,9 +75,11 @@ class Main : Application() {
             if(darkComb.match(event)) {
                 scene.stylesheets.clear()
                 scene.stylesheets.add("darkMode.css")
+                file3.writeText("Dark")
             } else if (lightComb.match(event)) {
                 scene.stylesheets.clear()
                 scene.stylesheets.add("defaultStyle.css")
+                file3.writeText("Light")
             }
         }
 
@@ -132,6 +147,7 @@ class Main : Application() {
 
     }
 }
+
 
 // USEFUL FOR LATER detecting scene size changes, however too difficult to work in rn
 // Detects changes in the window size and updates it in the file

@@ -20,9 +20,11 @@ Jerry Li: zy37li@uwaterloo.ca
 ## Quick-start
 First open docker on your machine and execute the following  terminal command: docker pull kuromaple/spring-server
 
+
 Next run the image on port 8080 via the command: docker run -p 8080:8080 kuromaple/spring-server
 
-Lastly download the zip file from the releases/Final Submission folder and extract it. navigate within the file via application-1.0.0/bin and run ./application from the command line.
+
+Lastly download the zip file from the releases/Final Submission folder and extract it. Navigate within the file via application-1.0.0/bin and run ./application from the command line.
 
 
 
@@ -40,10 +42,10 @@ version 0.2: released Mar 10, 2023
 
 version 0.3: released Mar 24, 2023
 	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.3-release-notes.md) (md)
-	* installers
+	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/tree/main/releases/Sprint%202%20demo%20executeables)
 
 
 version 0.4: released April 10, 2023
 	* [release-notes](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/blob/main/releases/v0.4-release-notes.md) (md)
-	* installers
+	* [installers](https://gitlab.uwaterloo.ca/c684wang/notetaking-app/-/tree/main/releases/Final%20Submission)
 
